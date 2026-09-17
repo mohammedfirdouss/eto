@@ -374,6 +374,11 @@ function TodaysCheck({ lang }: { lang: Lang }) {
     <aside className="docket-wrap" aria-label={t("todaysCheck", lang)}>
       <p className="eyebrow">{t("todaysCheck", lang)}</p>
       <div className="docket">
+        <span className="docket-seal" aria-hidden="true">
+          Verified
+          <br />
+          {corpusStatus.as_of.slice(0, 10)}
+        </span>
         <div className="docket-top">
           <span>
             CHECK
