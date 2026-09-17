@@ -361,6 +361,77 @@ function GapCounter({ lang }: { lang: Lang }) {
   );
 }
 
+/** Rotated hero docket: one verified fact a day from the myth deck. */
+function TodaysCheck({ lang }: { lang: Lang }) {
+  const [i, setI] = useState(
+    () => Math.floor(Date.now() / 86_400_000) % myths.myths.length,
+  );
+  const m = myths.myths[i];
+  return (
+    <aside className="docket-wrap" aria-label={t("todaysCheck", lang)}>
+      <p className="eyebrow">{t("todaysCheck", lang)}</p>
+      <div className="docket">
+        <div className="docket-top">
+          <span>
+            CHECK
+            <strong>#{String(m.id).padStart(2, "0")}</strong>
+          </span>
+          <span className="docket-cat">{m.category}</span>
+        </div>
+        <p className="docket-fact">{lang === "pcm" ? m.fact_pcm : m.fact_en}</p>
+        <div className="docket-bottom">
+          <span>— {m.refs.join(" · ")}</span>
+          <span>ẸTỌ́ · LAGOS</span>
+        </div>
+      </div>
+      <button
+        className="linklike docket-next"
+        onClick={() => setI((i + 1) % myths.myths.length)}
+      >
+        ↔ {String(i + 1).padStart(2, "0")} / {String(myths.myths.length).padStart(2, "0")}
+      </button>
+    </aside>
+  );
+}
+
+/** Track-changes ledger: what the bill would actually change, row by row. */
+function ChangesLedger({ lang }: { lang: Lang }) {
+  return (
+    <section aria-label={t("changesHeading", lang)}>
+      <h2>{t("changesHeading", lang)}</h2>
+      <div className="ledger">
+        <div className="ledger-row ledger-head">
+          <span />
+          <span>{t("lawColumn", lang)}</span>
+          <span>{t("billColumn", lang)}</span>
+        </div>
+        {changes.changes.map((c) => (
+          <div className="ledger-row" key={c.id}>
+            <span className="ledger-topic">
+              {lang === "pcm" ? c.topic_pcm : c.topic_en}
+              <span className={`chip verdict verdict-${c.verdict.toLowerCase()}`}>
+                {c.verdict}
+              </span>
+            </span>
+            <span className="ledger-law">
+              {c.law_en} <Cite refStr={c.law_ref} />
+            </span>
+            <span className="ledger-bill">
+              {lang === "pcm" ? c.bill_pcm : c.bill_en} <Cite refStr={c.bill_ref} />
+            </span>
+          </div>
+        ))}
+      </div>
+      <p className="stamp">
+        {lang === "pcm"
+          ? "Everything for the right column na proposal — e never be law."
+          : "Everything in the right column is a proposal — none of it is law yet."}{" "}
+        · verified {corpusStatus.as_of}
+      </p>
+    </section>
+  );
+}
+
 /** Numbered myth-vs-fact receipts, every fact pinned to its section. */
 function MythCards({ lang }: { lang: Lang }) {
   return (
