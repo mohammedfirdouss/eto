@@ -14,8 +14,14 @@
       "status": "PROPOSED_COMMITTEE",
       "stage": "Committee on Housing",
       "stage_history": [
-        { "event": "Second reading", "date": "2025-07-10" },
-        { "event": "Public hearing", "date": "2025-08" }
+        {
+          "event": "Second reading",
+          "date": "2025-07-10"
+        },
+        {
+          "event": "Public hearing",
+          "date": "2025-08"
+        }
       ],
       "coverage_note": "Would apply to all premises in Lagos State; no area exemptions (cl.2). Repeals Cap. T1 (cl.44)."
     }
