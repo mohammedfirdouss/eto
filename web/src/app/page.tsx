@@ -5,7 +5,11 @@ import { corpusStatus, resolveCitation } from "../lib/corpus";
 import { Lang, situationLabel, t } from "../lib/i18n";
 import { retrieve, RetrievalResult } from "../lib/retrieval";
 import { Answer, EXCLUDED_AREAS, Facts, SITUATIONS, SituationId } from "../lib/situations";
-import { TenancyType } from "../lib/rules";
+import { daysBetween, TenancyType } from "../lib/rules";
+import myths from "../data/myths.json";
+
+/** 10 July 2025 — the bill's second reading, the day the headlines started. */
+const SECOND_READING = "2025-07-10";
 
 /** One expandable citation: click to open the verbatim source text. */
 function Cite({ refStr }: { refStr: string }) {
@@ -116,6 +120,7 @@ function AnswerView({ answer, lang }: { answer: Answer; lang: Lang }) {
         <div>
           <h3>{answer.letter.title}</h3>
           <div className="letter">{answer.letter.text}</div>
+          <p className="stamp">{t("letterNote", lang)}</p>
           <button
             className="primary"
             onClick={() => downloadText(`${answer.situation}-letter.txt`, answer.letter!.text)}
@@ -327,6 +332,55 @@ function FreeTextAsk({ lang }: { lang: Lang }) {
   );
 }
 
+/** The thesis as a number: how long "reform" has been headlines, not law. */
+function GapCounter({ lang }: { lang: Lang }) {
+  const days = daysBetween(SECOND_READING, new Date().toISOString().slice(0, 10));
+  return (
+    <div className="gap" role="note">
+      <span className="gap-number">{days}</span>
+      <span className="gap-caption">
+        {t("gapSince", lang)}
+        <span className="stamp" style={{ display: "block" }}>
+          2nd reading 2025-07-10 · committee stage · verified {corpusStatus.as_of}
+        </span>
+      </span>
+    </div>
+  );
+}
+
+/** Numbered myth-vs-fact receipts, every fact pinned to its section. */
+function MythCards({ lang }: { lang: Lang }) {
+  return (
+    <section aria-label={t("mythsHeading", lang)}>
+      <h2>{t("mythsHeading", lang)}</h2>
+      <div className="myths">
+        {myths.myths.map((m) => (
+          <article className="myth" key={m.id}>
+            <div className="myth-head">
+              <span className="myth-num">#{String(m.id).padStart(2, "0")}</span>
+              <span className="chip myth-chip">{m.category}</span>
+            </div>
+            <p className="myth-heard">
+              <span className="myth-label">{t("heardLabel", lang)}</span>
+              {lang === "pcm" ? m.heard : m.heard_en}
+            </p>
+            <p className="myth-fact">
+              <span className="myth-label">{t("factLabel", lang)}</span>
+              {lang === "pcm" ? m.fact_pcm : m.fact_en}
+            </p>
+            <p className="stamp">
+              {t("checkSection", lang)}{" "}
+              {m.refs.map((r) => (
+                <Cite key={r} refStr={r} />
+              ))}
+            </p>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 export default function Home() {
   const [situation, setSituation] = useState<SituationId | null>(null);
   const [answer, setAnswer] = useState<Answer | null>(null);
@@ -357,6 +411,8 @@ export default function Home() {
       </h1>
       <p className="tagline">{t("tagline", lang)}</p>
 
+      <GapCounter lang={lang} />
+
       <div className="status-banner">
         <strong>{t("bannerLead", lang)}</strong>{" "}
         {t("bannerRest", lang).replace("{date}", corpusStatus.as_of)}
@@ -373,6 +429,7 @@ export default function Home() {
             ))}
           </div>
           <FreeTextAsk lang={lang} />
+          <MythCards lang={lang} />
         </>
       )}
 

@@ -124,9 +124,6 @@ function fmtN(n: number): string {
 
 const today = () => new Date().toISOString().slice(0, 10);
 
-const DISCLAIMER =
-  "This letter was prepared with an informational tool. It is not legal advice.";
-
 /* ---------------------------------------------------------------- */
 
 export function answerRentIncrease(facts: Facts): Answer {
@@ -188,9 +185,7 @@ Under section 37 of the Tenancy Law (Cap. T1, Laws of Lagos State 2015), a tenan
 I will continue to pay my current rent while this is resolved.
 
 Yours faithfully,
-${facts.userName ?? "[Your name]"}
-
-${DISCLAIMER}`,
+${facts.userName ?? "[Your name]"}`,
     },
   };
 }
@@ -275,9 +270,7 @@ As a ${type} tenant I am entitled to ${req.label} under section 13(1) of the Ten
 I remain willing to discuss this with you, including at the Lagos State Citizens Mediation Centre. Meanwhile I will continue to observe all my obligations as tenant.
 
 Yours faithfully,
-${facts.userName ?? "[Your name]"}
-
-${DISCLAIMER}`,
+${facts.userName ?? "[Your name]"}`,
           }
         : undefined,
   };
@@ -338,9 +331,7 @@ Relevant law: section 44(1) of the Tenancy Law (Cap. T1, Laws of Lagos State 201
 
 I request that possession be restored and that this matter be mediated at the Lagos State Citizens Mediation Centre.
 
-Signed: ______________________  Date: ${today()}
-
-${DISCLAIMER}`,
+Signed: ______________________  Date: ${today()}`,
     },
   };
 }
@@ -412,9 +403,7 @@ I am ${facts.userName ?? "[your name]"}, a prospective/sitting tenant of the abo
 I ask LASRERA to confirm whether this agent is registered, and to review the fee demanded. Evidence is attached.
 
 Yours faithfully,
-${facts.userName ?? "[Your name]"}
-
-${DISCLAIMER}`,
+${facts.userName ?? "[Your name]"}`,
     },
   };
 }

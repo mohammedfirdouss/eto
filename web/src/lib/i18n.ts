@@ -48,6 +48,21 @@ const STRINGS = {
     en: "Informational only — not legal advice. Every statement links to the section of the law or bill it comes from. Where we cannot cite, we say so and point you to the Lagos State Citizens Mediation Centre or a lawyer. Nothing you type here leaves your device.",
     pcm: "Na information be this — no be legal advice. Every talk get the section of law or bill wey e come from. If we no fit show you the section, we go talk true say we no know, and we go point you go Citizens Mediation Centre abi lawyer. Anything wey you type here no dey leave your phone.",
   },
+  letterNote: {
+    en: "Review this draft, adapt it, and send it yourself. It is not legal advice.",
+    pcm: "Check this draft well, change wetin you wan change, then send am yourself. No be legal advice.",
+  },
+  gapSince: {
+    en: "days since the bill passed second reading. Still not law.",
+    pcm: "days don pass since the bill cross second reading. E never still turn law.",
+  },
+  mythsHeading: {
+    en: "Wetin dem talk vs wetin the law talk",
+    pcm: "Wetin dem talk vs wetin the law talk",
+  },
+  heardLabel: { en: "You may have heard", pcm: "Dem talk say" },
+  factLabel: { en: "The law actually says", pcm: "Wetin the law talk" },
+  checkSection: { en: "Check the section:", pcm: "Check the section:" },
   situationLabels: {
     en: {
       "rent-increase": "My landlord increased my rent",
