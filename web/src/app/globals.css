@@ -426,6 +426,9 @@ form.facts textarea {
   font-style: italic;
   color: var(--muted);
   margin: 0.8rem 0 0.6rem;
+}
+
+.myth-quote {
   text-decoration: line-through;
   text-decoration-color: var(--warn);
   text-decoration-thickness: 1.5px;

@@ -362,7 +362,7 @@ function MythCards({ lang }: { lang: Lang }) {
             </div>
             <p className="myth-heard">
               <span className="myth-label">{t("heardLabel", lang)}</span>
-              {lang === "pcm" ? m.heard : m.heard_en}
+              <span className="myth-quote">{lang === "pcm" ? m.heard : m.heard_en}</span>
             </p>
             <p className="myth-fact">
               <span className="myth-label">{t("factLabel", lang)}</span>
