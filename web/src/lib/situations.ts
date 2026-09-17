@@ -5,6 +5,7 @@
  * body, and a generated letter.
  */
 import bodies from "../data/bodies.json";
+import status from "../data/status.json";
 import { CorpusUnit, resolveCitation } from "./corpus";
 import {
   addDays,
@@ -72,7 +73,7 @@ export interface Answer {
   letter?: { title: string; text: string };
 }
 
-const LAW_AS_OF = "2026-09-17";
+const LAW_AS_OF = status.as_of;
 
 function cite(ref: string): CorpusUnit {
   const unit = resolveCitation(ref);

@@ -8,6 +8,7 @@
 import law from "../data/tenancy-law-2011.json";
 import bill from "../data/tenancy-bill-2025.json";
 import status from "../data/status.json";
+import pack from "../data/pack.json";
 
 export type DocStatus = "IN_FORCE" | "PROPOSED_COMMITTEE" | "PASSED_AWAITING_ASSENT";
 
@@ -26,8 +27,8 @@ export interface CorpusUnit {
   asOf: string;
 }
 
-const LAW_CITE = "Tenancy Law, Cap. T1, Laws of Lagos State 2015";
-const BILL_CITE = "Lagos State Tenancy and Recovery of Premises Bill, 2025 (draft — not law)";
+const LAW_CITE = pack.law_citation;
+const BILL_CITE = pack.bill_citation;
 
 export const lawUnits: CorpusUnit[] = law.sections.map((s) => ({
   id: `law-s${s.section}`,
@@ -56,6 +57,7 @@ export const billUnits: CorpusUnit[] = bill.clauses.map((c) => ({
 export const allUnits: CorpusUnit[] = [...lawUnits, ...billUnits];
 
 export const corpusStatus = status;
+export const jurisdiction = pack;
 
 /** Official source of each document, for "verify it yourself" links. */
 export const sourceUrls: Record<string, string> = {

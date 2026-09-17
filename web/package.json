@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "test": "vitest run",
-    "sync-corpus": "cp ../corpus/lagos-ng/statute/tenancy-law-2011.json ../corpus/lagos-ng/bill/tenancy-bill-2025.json ../corpus/lagos-ng/status.json ../corpus/lagos-ng/bodies.json ../corpus/lagos-ng/myths.json ../corpus/lagos-ng/changes.json src/data/"
+    "sync-corpus": "cp ../corpus/lagos-ng/statute/tenancy-law-2011.json ../corpus/lagos-ng/bill/tenancy-bill-2025.json ../corpus/lagos-ng/status.json ../corpus/lagos-ng/bodies.json ../corpus/lagos-ng/myths.json ../corpus/lagos-ng/changes.json ../corpus/lagos-ng/pack.json src/data/"
   },
   "dependencies": {
     "next": "16.3.5",

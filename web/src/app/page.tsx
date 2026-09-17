@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { corpusStatus, resolveCitation, sourceUrls } from "../lib/corpus";
+import { corpusStatus, jurisdiction, resolveCitation, sourceUrls } from "../lib/corpus";
 import { Lang, situationLabel, t } from "../lib/i18n";
 import { retrieve, RetrievalResult } from "../lib/retrieval";
 import { Answer, EXCLUDED_AREAS, Facts, SITUATIONS, SituationId } from "../lib/situations";
@@ -9,8 +9,7 @@ import { daysBetween, TenancyType } from "../lib/rules";
 import myths from "../data/myths.json";
 import changes from "../data/changes.json";
 
-/** 10 July 2025 — the bill's second reading, the day the headlines started. */
-const SECOND_READING = "2025-07-10";
+const SECOND_READING = jurisdiction.bill_second_reading;
 
 /** One expandable citation: click to open the verbatim source text. */
 function Cite({ refStr }: { refStr: string }) {
@@ -62,8 +61,8 @@ function PanelView({
       <h3>{t(kind === "inforce" ? "inForceHeading" : "proposedHeading", lang)}</h3>
       <span className="stamp">
         {panel.status === "IN_FORCE"
-          ? "Tenancy Law, Cap. T1, Laws of Lagos State 2015"
-          : "Tenancy & Recovery of Premises Bill 2025 — at committee, NOT law"}{" "}
+          ? jurisdiction.law_citation
+          : `${jurisdiction.bill_short} — at committee, NOT law`}{" "}
         · status verified {panel.asOf}
       </span>
       <ul>
@@ -314,7 +313,7 @@ function FreeTextAsk({ lang }: { lang: Lang }) {
               <section className="panel inforce">
                 <span className="chip">{t("inForceChip", lang)}</span>
                 <h3>{t("inForceHeading", lang)}</h3>
-                <span className="stamp">Tenancy Law, Cap. T1, Laws of Lagos State 2015</span>
+                <span className="stamp">{jurisdiction.law_citation}</span>
                 <ul>
                   {result.inForce.map((h) => (
                     <li key={h.unit.id}>
@@ -401,7 +400,7 @@ function TodaysCheck({ lang }: { lang: Lang }) {
         <p className="docket-fact">{lang === "pcm" ? m.fact_pcm : m.fact_en}</p>
         <div className="docket-bottom">
           <span>— {m.refs.join(" · ")}</span>
-          <span>ẸTỌ́ · LAGOS</span>
+          <span>ẸTỌ́ · {jurisdiction.place.toUpperCase()}</span>
         </div>
       </div>
       <button
@@ -510,7 +509,7 @@ export default function Home() {
 
       <div className="hero">
         <div>
-          <p className="eyebrow">Lagos · Tenancy Rights · Law vs Bill</p>
+          <p className="eyebrow">{jurisdiction.masthead}</p>
           <h1>
             Ẹ̀<em>tọ́</em>
           </h1>
