@@ -106,6 +106,18 @@ function coverage(facts: Facts): string | undefined {
   return undefined;
 }
 
+function coveragePcm(facts: Facts): string | undefined {
+  if (facts.excludedArea) {
+    return (
+      `Because the house dey ${facts.areaName ?? "one exempted area"}, the Tenancy Law ` +
+      `(Cap. T1) no cover that area — s.1(3) comot Apapa, Ikeja GRA, Ikoyi and Victoria ` +
+      `Island from the law. Na your agreement and general law dey control am for there. ` +
+      `The bill (cl.2) wan remove this exemption make the law cover everywhere for Lagos.`
+    );
+  }
+  return undefined;
+}
+
 function fmtN(n: number): string {
   return `₦${n.toLocaleString("en-NG")}`;
 }
@@ -125,6 +137,7 @@ export function answerRentIncrease(facts: Facts): Answer {
   return {
     situation: "rent-increase",
     coverageNote: coverage(facts),
+    coverageNotePcm: coveragePcm(facts),
     inForce: {
       heading: "In force today",
       status: "IN_FORCE",
@@ -133,10 +146,12 @@ export function answerRentIncrease(facts: Facts): Answer {
         point(
           "There is no rent cap in Lagos, but a tenant may ask the Court to declare an increase unreasonable. The Court looks at the premises, comparable rents in the area, and any improvements.",
           "s.37",
+          "No rent cap for Lagos, but tenant fit go Court make dem declare say the increase too much. Court go look the house, wetin others dey pay for that area, and any repair wey landlord do.",
         ),
         point(
           "Until the Court rules, you remain a lawful tenant if you keep paying your existing rent. Refusing to pay anything is what puts you at risk.",
           "s.13",
+          "Before Court talk, you still be correct tenant as long as you continue dey pay your old rent. Na to stop payment completely fit put you for wahala.",
         ),
       ],
     },
@@ -148,6 +163,7 @@ export function answerRentIncrease(facts: Facts): Answer {
         point(
           "The bill keeps the same mechanism: apply to Court to declare an increase unreasonable. It adds no rent cap either — headlines suggesting a cap on increases are wrong.",
           "cl.33",
+          "The bill still be the same arrangement: na Court go decide whether the increase make sense. E no add any rent cap — those headline wey talk say dem don cap rent increase no correct.",
         ),
       ],
     },
@@ -200,6 +216,7 @@ export function answerQuitNotice(facts: Facts): Answer {
   return {
     situation: "quit-notice",
     coverageNote: coverage(facts),
+    coverageNotePcm: coveragePcm(facts),
     inForce: {
       heading: "In force today",
       status: "IN_FORCE",
@@ -208,14 +225,17 @@ export function answerQuitNotice(facts: Facts): Answer {
         point(
           `A ${type} tenant is entitled to ${req.label} where the agreement is silent. The tenancy type is judged by how rent is paid or demanded.`,
           "s.13",
+          `For ${type} tenant, na ${req.label} you suppose get if una agreement no talk anything. Na how you dey pay rent dem take know which kind tenant you be.`,
         ),
         point(
           "After any valid notice expires, the landlord must still serve a 7-day notice of intention to go to court, then obtain a court order. Only a court can put you out.",
           "s.16",
+          "Even after correct notice finish, landlord must still give you 7-day notice say e dey go court, then e go need court order. Na only court fit comot you.",
         ),
         point(
           "Forcible ejection, threats, or cutting off your premises is a criminal offence — fine up to ₦250,000 or 6 months' imprisonment.",
           "s.44",
+          "To force you comot, threaten you, abi scatter your place na crime — fine fit reach ₦250,000 abi 6 months for prison.",
         ),
       ],
     },
@@ -224,10 +244,15 @@ export function answerQuitNotice(facts: Facts): Answer {
       status: "PROPOSED_COMMITTEE",
       asOf: LAW_AS_OF,
       points: [
-        point("The bill keeps the same notice periods for every tenancy type.", "cl.14"),
+        point(
+          "The bill keeps the same notice periods for every tenancy type.",
+          "cl.14",
+          "The bill keep the same notice time for every kind of tenancy.",
+        ),
         point(
           "It raises the penalty for self-help eviction to at least ₦1,000,000 or up to 6 months.",
           "cl.43",
+          "E raise the punishment for landlord wey comot tenant by force go at least ₦1,000,000 abi up to 6 months.",
         ),
       ],
     },
@@ -262,6 +287,7 @@ export function answerLockout(facts: Facts): Answer {
   return {
     situation: "lockout",
     coverageNote: coverage(facts),
+    coverageNotePcm: coveragePcm(facts),
     inForce: {
       heading: "In force today",
       status: "IN_FORCE",
@@ -270,10 +296,12 @@ export function answerLockout(facts: Facts): Answer {
         point(
           "Locking you out, removing doors or roofing, demolishing, threatening or molesting you to make you leave is a criminal offence — fine up to ₦250,000 or 6 months' imprisonment. Only a court order can end your possession.",
           "s.44",
+          "To lock you outside, remove door abi roof, scatter the house, threaten abi harass you make you pack comot — na crime. Fine fit reach ₦250,000 abi 6 months prison. Na only court order fit end your stay.",
         ),
         point(
           "You are entitled to quiet and peaceable enjoyment of the premises, including freedom from unreasonable disturbance.",
           "s.6",
+          "You get right to enjoy the house in peace — nobody suppose dey disturb you anyhow.",
         ),
       ],
     },
@@ -285,6 +313,7 @@ export function answerLockout(facts: Facts): Answer {
         point(
           "The bill raises the penalty for the same conduct to a fine of at least ₦1,000,000 or up to 6 months — but that is not the law yet.",
           "cl.43",
+          "The bill raise the punishment for this same behaviour go at least ₦1,000,000 abi up to 6 months — but e never be law.",
         ),
       ],
     },
@@ -325,6 +354,7 @@ export function answerAgencyFee(facts: Facts): Answer {
   return {
     situation: "agency-fee",
     coverageNote: coverage(facts),
+    coverageNotePcm: coveragePcm(facts),
     inForce: {
       heading: "In force today",
       status: "IN_FORCE",
@@ -333,10 +363,12 @@ export function answerAgencyFee(facts: Facts): Answer {
         point(
           "Today the law only says whoever engages a professional pays their fee — there is no statutory cap on agency fees. A '10% cap' you may have read about is not in the current law.",
           "s.11",
+          "For now, the law just talk say na person wey hire professional go pay am — no cap for agent fee inside the law wey dey work today. That '10% cap' wey you fit don read no dey inside am.",
         ),
         point(
           "Advance rent is capped though: a new tenant cannot lawfully be made to pay more than 1 year's rent upfront.",
           "s.4",
+          "But advance rent get cap: dem no fit make new tenant pay pass 1 year rent upfront.",
         ),
       ],
     },
@@ -348,6 +380,7 @@ export function answerAgencyFee(facts: Facts): Answer {
         point(
           "The bill caps agent commission at 5% of one year's rent, requires agents to be registered, and makes breach an offence (repayment plus up to 2 years or ₦1,000,000). Not yet in force.",
           "cl.3",
+          "The bill wan cap agent commission for 5% of one year rent, make every agent register, and punish anybody wey break am (return the money plus up to 2 years abi ₦1,000,000). E never start to work.",
         ),
       ],
     },
@@ -390,6 +423,7 @@ export function answerAgentCheck(facts: Facts): Answer {
   return {
     situation: "agent-check",
     coverageNote: coverage(facts),
+    coverageNotePcm: coveragePcm(facts),
     inForce: {
       heading: "In force today",
       status: "IN_FORCE",
@@ -398,6 +432,7 @@ export function answerAgentCheck(facts: Facts): Answer {
         point(
           "LASRERA registers estate agents in Lagos. Before paying anything, ask for the agent's LASRERA registration and verify it with LASRERA directly.",
           "s.11",
+          "Na LASRERA dey register estate agent for Lagos. Before you pay anything, ask for the agent LASRERA registration and confirm am from LASRERA direct.",
         ),
       ],
     },
@@ -409,6 +444,7 @@ export function answerAgentCheck(facts: Facts): Answer {
         point(
           "The bill would make registration mandatory to act as an agent at all, cap commission at 5% of a year's rent, and require receipts within 7 days.",
           "cl.3",
+          "The bill go make registration compulsory before person fit do agent work at all, cap commission for 5% of one year rent, and make dem give receipt within 7 days.",
         ),
       ],
     },

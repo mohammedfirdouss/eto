@@ -62,6 +62,17 @@ describe("situations", () => {
     expect(a.coverageNote).toContain("s.1(3)");
   });
 
+  it("every point carries a Pidgin variant", () => {
+    for (const s of SITUATIONS) {
+      const a = s.answer(SAMPLE);
+      for (const p of [...a.inForce.points, ...a.proposed.points]) {
+        expect(p.pcm, `${s.id}: ${p.ref}`).toBeTruthy();
+      }
+    }
+    const excluded = answerQuitNotice({ ...SAMPLE, excludedArea: true, areaName: "Ikoyi" });
+    expect(excluded.coverageNotePcm).toContain("Ikoyi");
+  });
+
   it("agency fee over 5% is flagged against the bill only", () => {
     const a = SITUATIONS.find((s) => s.id === "agency-fee")!.answer(SAMPLE);
     expect(a.computed.find((c) => c.label.includes("share"))?.value).toBe("10%");
