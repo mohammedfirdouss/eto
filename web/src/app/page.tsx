@@ -1,12 +1,13 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { corpusStatus, resolveCitation } from "../lib/corpus";
 import { Lang, situationLabel, t } from "../lib/i18n";
 import { retrieve, RetrievalResult } from "../lib/retrieval";
 import { Answer, EXCLUDED_AREAS, Facts, SITUATIONS, SituationId } from "../lib/situations";
 import { daysBetween, TenancyType } from "../lib/rules";
 import myths from "../data/myths.json";
+import changes from "../data/changes.json";
 
 /** 10 July 2025 — the bill's second reading, the day the headlines started. */
 const SECOND_READING = "2025-07-10";
