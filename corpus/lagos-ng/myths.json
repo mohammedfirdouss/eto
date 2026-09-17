@@ -8,16 +8,22 @@
       "heard_en": "Lagos has capped rent — landlords can no longer raise it.",
       "fact_en": "Neither the current law nor the bill caps rent. Your remedy today is to ask the Court to declare an increase unreasonable.",
       "fact_pcm": "The law wey dey and even the bill no cap rent at all. Wetin you fit do today na to go Court make dem declare say the increase too much.",
-      "refs": ["s.37", "cl.33"]
+      "refs": [
+        "s.37",
+        "cl.33"
+      ]
     },
     {
       "id": 2,
       "category": "AGENCY FEE",
       "heard": "Agent fee don cap — some papers talk 10%, some talk 5%.",
       "heard_en": "Agent fees are now capped — reported as 10% by some outlets, 5% by others.",
-      "fact_en": "There is no fee cap in force. The 5% figure (of one year's rent) is in the bill, which is still at committee. The 10% figure matches neither the law nor the bill.",
-      "fact_pcm": "No fee cap dey work now. The 5% (of one year rent) na inside the bill, and the bill still dey committee. The 10% wey some papers talk no dey inside the law or the bill at all.",
-      "refs": ["s.11", "cl.3"]
+      "fact_en": "There is no fee cap in force. The 5% figure (of one year's rent) is in the bill, which is still at committee. The 10% figure comes from a government statement of June 2025 ('agency fees must be between zero and 10 per cent') — a policy position, not a law.",
+      "fact_pcm": "No fee cap dey work now. The 5% (of one year rent) na inside the bill, and the bill still dey committee. The 10% na from government talk of June 2025 ('agency fee must dey between zero and 10 per cent') — na wetin dem talk, no be law.",
+      "refs": [
+        "s.11",
+        "cl.3"
+      ]
     },
     {
       "id": 3,
@@ -26,7 +32,10 @@
       "heard_en": "Landlords can no longer collect more than 3 months' rent upfront.",
       "fact_en": "That 3-month cap is the bill, not the law. Today's caps: 1 year for a new tenant, 6 months for a sitting monthly tenant — in force since 2011.",
       "fact_pcm": "That 3-month cap na the bill talk am, e never be law. Wetin dey work today: 1 year for new tenant, 6 months for sitting monthly tenant — since 2011.",
-      "refs": ["s.4", "cl.5"]
+      "refs": [
+        "s.4",
+        "cl.5"
+      ]
     },
     {
       "id": 4,
@@ -35,7 +44,10 @@
       "heard_en": "The Tenancy Law protects every tenant in Lagos.",
       "fact_en": "It does not apply in Apapa, Ikeja GRA, Ikoyi or Victoria Island, or to institutional housing. The bill would remove the area exemptions — but it is not law yet.",
       "fact_pcm": "E no cover Apapa, Ikeja GRA, Ikoyi and Victoria Island, and some special housing. The bill wan remove that exemption — but e never be law.",
-      "refs": ["s.1", "cl.2"]
+      "refs": [
+        "s.1",
+        "cl.2"
+      ]
     },
     {
       "id": 5,
@@ -44,7 +56,10 @@
       "heard_en": "If a tenant owes rent, the landlord can lock the place or remove the door.",
       "fact_en": "Never — arrears or not, self-help eviction is a crime today (fine up to ₦250,000 or 6 months). Only a court order ends possession. The bill would raise the fine to at least ₦1,000,000.",
       "fact_pcm": "Lai-lai — whether you dey owe or not, to lock tenant outside na crime today (fine reach ₦250,000 abi 6 months). Na only court order fit end your stay. The bill wan raise the fine go at least ₦1,000,000.",
-      "refs": ["s.44", "cl.43"]
+      "refs": [
+        "s.44",
+        "cl.43"
+      ]
     }
   ]
 }

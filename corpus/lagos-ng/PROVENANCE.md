@@ -64,7 +64,23 @@ until proofread against the PDF. Completeness is validated in-script: 49/49 sect
   `bodies.json` marks this honestly.
 - **Lagos Judiciary** portal URL checked reachable 2026-09-17.
 
-## 5. Secondary sources (status and dates only, never legal statements)
+## 5. Firecrawl ingestion pass (2026-09-17)
+
+Run over the Firecrawl MCP endpoint (authorized session, driven via JSON-RPC).
+
+- **Bill status re-verified:** searches for a third reading or committee report return
+  nothing beyond committee stage. `PROPOSED_COMMITTEE` stands; `as_of` 2026-09-17.
+- **The "10%" agency-fee figure traced:** a Lagos State Government news item of
+  19 June 2025 (https://lagosstate.gov.ng/news/all/view/685588c05e4c9d6cecaa165a) quotes
+  the Special Adviser on Housing: "Agency fees must be between zero and 10 per cent."
+  This is a policy statement — it appears in no law and no bill. Myth card #02 now
+  explains the conflicting press figures with this source.
+- **LASRERA domain confirmed down:** lasrera.lagosstate.gov.ng failed DNS resolution
+  from Firecrawl's infrastructure as well as locally — the regulator's official site is
+  unreachable globally, not blocked. Recorded in `bodies.json`; the app shows URLs
+  without unverifiable phone numbers.
+
+## 6. Secondary sources (status and dates only, never legal statements)
 
 - Lagos State House of Assembly news pages — legislative stage
 - Premium Times, Channels TV — stage and dates; where press figures conflict
