@@ -1,0 +1,71 @@
+{
+  "as_of": "2026-09-17",
+  "changes": [
+    {
+      "id": 1,
+      "topic_en": "Notice to quit",
+      "topic_pcm": "Quit notice",
+      "law_en": "1 week (at-will) · 1 month (monthly) · 3 months (quarterly/half-yearly) · 6 months (yearly)",
+      "bill_en": "Identical periods for every tenancy type",
+      "bill_pcm": "The same time for every kind of tenancy",
+      "verdict": "UNCHANGED",
+      "law_ref": "s.13",
+      "bill_ref": "cl.14"
+    },
+    {
+      "id": 2,
+      "topic_en": "Advance rent — sitting monthly tenant",
+      "topic_pcm": "Advance rent — tenant wey dey pay monthly",
+      "law_en": "Up to 6 months",
+      "bill_en": "Down to 3 months",
+      "bill_pcm": "E go come down reach 3 months",
+      "verdict": "TIGHTENED",
+      "law_ref": "s.4",
+      "bill_ref": "cl.5"
+    },
+    {
+      "id": 3,
+      "topic_en": "Arrears before a monthly tenancy lapses",
+      "topic_pcm": "How long tenant fit owe before monthly tenancy go lapse",
+      "law_en": "6 months of arrears",
+      "bill_en": "Only 2 months — evictions for arrears would get much faster",
+      "bill_pcm": "Na only 2 months — eviction for owing go quick well well",
+      "verdict": "CHANGED",
+      "law_ref": "s.13",
+      "bill_ref": "cl.14"
+    },
+    {
+      "id": 4,
+      "topic_en": "Penalty for self-help eviction",
+      "topic_pcm": "Punishment for landlord wey comot tenant by force",
+      "law_en": "Fine up to ₦250,000 or 6 months",
+      "bill_en": "Fine of at least ₦1,000,000 or up to 6 months",
+      "bill_pcm": "Fine of at least ₦1,000,000 abi up to 6 months",
+      "verdict": "RAISED",
+      "law_ref": "s.44",
+      "bill_ref": "cl.43"
+    },
+    {
+      "id": 5,
+      "topic_en": "Agency fee cap",
+      "topic_pcm": "Cap for agent fee",
+      "law_en": "None in force",
+      "bill_en": "5% of one year's rent, registered agents only",
+      "bill_pcm": "5% of one year rent, and na only registered agent fit collect",
+      "verdict": "NEW",
+      "law_ref": "s.11",
+      "bill_ref": "cl.3"
+    },
+    {
+      "id": 6,
+      "topic_en": "Where the law applies",
+      "topic_pcm": "Where the law dey cover",
+      "law_en": "Not in Apapa, Ikeja GRA, Ikoyi, Victoria Island",
+      "bill_en": "Everywhere in Lagos State",
+      "bill_pcm": "Everywhere for Lagos State",
+      "verdict": "EXPANDED",
+      "law_ref": "s.1",
+      "bill_ref": "cl.2"
+    }
+  ]
+}

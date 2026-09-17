@@ -63,6 +63,12 @@ const STRINGS = {
   heardLabel: { en: "You may have heard", pcm: "Dem talk say" },
   factLabel: { en: "The law actually says", pcm: "Wetin the law talk" },
   checkSection: { en: "Check the section:", pcm: "Check the section:" },
+  todaysCheck: { en: "Today’s check", pcm: "Today check" },
+  changesHeading: { en: "If the bill passes, what changes?", pcm: "If the bill pass, wetin go change?" },
+  lawColumn: { en: "Law today", pcm: "Law today" },
+  billColumn: { en: "Under the bill", pcm: "Under the bill" },
+  inForceStamp: { en: "In Force", pcm: "E Dey Work" },
+  notLawStamp: { en: "Not Law Yet", pcm: "No Be Law Yet" },
   situationLabels: {
     en: {
       "rent-increase": "My landlord increased my rent",
