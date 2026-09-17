@@ -37,7 +37,7 @@ npm test           # 30 unit tests: retrieval, rules engine, situations
 
 ## Repo structure
 
-```
+```text
 corpus/lagos-ng/     the jurisdiction pack: statute + bill (sources, hashes,
                      section JSON), bodies, myths, changes ledger, PROVENANCE.md
 web/                 Next.js app — UI, BM25 retrieval, rules engine, tests
