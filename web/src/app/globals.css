@@ -13,23 +13,6 @@
   --accent: #0a6b3d;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --paper: #16140f;
-    --ink: #ece7dc;
-    --muted: #a49b8a;
-    --line: #3b372e;
-    --rule: #ece7dc;
-    --card: #1e1b15;
-    --inforce: #4cc38a;
-    --inforce-tint: #182018;
-    --proposed: #e0a458;
-    --proposed-tint: #241d10;
-    --warn: #ff6b6b;
-    --accent: #4cc38a;
-  }
-}
-
 * {
   box-sizing: border-box;
 }
