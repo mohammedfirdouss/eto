@@ -87,6 +87,24 @@
           "url": "https://lagosjudiciary.gov.ng/"
         }
       ]
+    },
+    {
+      "id": "small-claims",
+      "name": "Small Claims Court (at the Magistrate Court)",
+      "role": "Fast track for recovering money — an overcharged fee, a withheld deposit, a refund — up to ₦5,000,000, designed for individuals without a lawyer.",
+      "bring": [
+        "Evidence of the payment (receipt, transfer, messages)",
+        "A written demand you sent first (a Letter of Demand is required before filing)",
+        "The other party's name and address"
+      ],
+      "links": [
+        {
+          "label": "How it works (Lagos COMIS guide)",
+          "url": "https://lagoscomis.tawk.help/article/regulatory-process-of-small-claims-court"
+        }
+      ],
+      "contact_source": "https://lagoscomis.tawk.help/article/regulatory-process-of-small-claims-court",
+      "contact_verified": "2026-09-17"
     }
   ]
 }
