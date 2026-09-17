@@ -470,7 +470,6 @@ export default function Home() {
   const [answer, setAnswer] = useState<Answer | null>(null);
   const [lang, setLang] = useState<Lang>("en");
   const active = useMemo(() => SITUATIONS.find((s) => s.id === situation), [situation]);
-  const billStatus = corpusStatus.documents[1];
 
   return (
     <main>
@@ -489,11 +488,16 @@ export default function Home() {
         </button>
       </div>
 
-      <p className="eyebrow">Lagos · Tenancy Rights · Law vs Bill</p>
-      <h1>
-        Ẹ̀<em>tọ́</em>
-      </h1>
-      <p className="tagline">{t("tagline", lang)}</p>
+      <div className="hero">
+        <div>
+          <p className="eyebrow">Lagos · Tenancy Rights · Law vs Bill</p>
+          <h1>
+            Ẹ̀<em>tọ́</em>
+          </h1>
+          <p className="tagline">{t("tagline", lang)}</p>
+        </div>
+        {!situation && <TodaysCheck lang={lang} />}
+      </div>
 
       <GapCounter lang={lang} />
 
@@ -513,6 +517,7 @@ export default function Home() {
             ))}
           </div>
           <FreeTextAsk lang={lang} />
+          <ChangesLedger lang={lang} />
           <MythCards lang={lang} />
         </>
       )}
