@@ -10,7 +10,20 @@
         "Your tenancy agreement, if you have one",
         "Any notice or letter your landlord served you",
         "Recent utility bills for the premises"
-      ]
+      ],
+      "offices": [
+        { "area": "Ikeja (Head Office)", "address": "1 Motorways Centre, opposite 7up Bottling Company, Alausa-Ikeja", "phone": "01-8790586" },
+        { "area": "Lagos Island", "address": "18 King George V Road, Onikan", "phone": "01-8958007" },
+        { "area": "Yaba", "address": "201 Herbert Macaulay Road, opposite Police Station, Adekunle", "phone": "01-8963966" },
+        { "area": "Bariga", "address": "10 Akinsola Street, off Oloja Street", "phone": "08163019351" },
+        { "area": "Ikorodu", "address": "132 Lagos Road, Jumofak Bus-Stop" },
+        { "area": "Ikotun", "phone": "08190577722" }
+      ],
+      "links": [
+        { "label": "All offices (Ministry of Justice)", "url": "https://lagosministryofjustice.org/citizens-mediation-centre/" }
+      ],
+      "contact_source": "https://lagosministryofjustice.org/citizens-mediation-centre/",
+      "contact_verified": "2026-09-17"
     },
     {
       "id": "lasrera",
@@ -19,7 +32,14 @@
       "bring": [
         "The agent's name and, if known, registration details",
         "Evidence of the fee demanded or paid (message, receipt, transfer)"
-      ]
+      ],
+      "links": [
+        { "label": "Check an agent (Practitioner Search)", "url": "https://lasrera.lagosstate.gov.ng/practitionerSearch.jsp" },
+        { "label": "LASRERA website", "url": "https://lasrera.lagosstate.gov.ng/" }
+      ],
+      "contact_source": "https://lasrera.lagosstate.gov.ng/",
+      "contact_verified": null,
+      "contact_note": "Official site was unreachable at verification time; URLs recorded, phone numbers omitted until verifiable from an official page."
     },
     {
       "id": "magistrate-court",
@@ -29,6 +49,9 @@
         "Proof of rent payment and updated utility bills",
         "Tenancy agreement and all notices served or received",
         "Your incident record, if there was a lock-out or threat"
+      ],
+      "links": [
+        { "label": "Lagos Judiciary — Magisterial Districts", "url": "https://lagosjudiciary.gov.ng/" }
       ]
     }
   ]

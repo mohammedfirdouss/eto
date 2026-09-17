@@ -53,7 +53,18 @@ text layer has OCR-style artifacts (mid-word spaces, occasional digit-for-letter
 until proofread against the PDF. Completeness is validated in-script: 49/49 sections,
 45/45 clauses.
 
-## 4. Secondary sources (status and dates only, never legal statements)
+## 4. Named bodies — contact information
+
+- **Citizens Mediation Centre** offices and phone numbers: taken verbatim from the Lagos
+  State Ministry of Justice page (https://lagosministryofjustice.org/citizens-mediation-centre/),
+  verified 2026-09-17. Rendered in the app with a "contacts verified" stamp.
+- **LASRERA**: official site (https://lasrera.lagosstate.gov.ng/) was unreachable at
+  verification time. We record only its URLs (site + Practitioner Search) and omit phone
+  numbers that could not be read from an official page. `contact_verified: null` in
+  `bodies.json` marks this honestly.
+- **Lagos Judiciary** portal URL checked reachable 2026-09-17.
+
+## 5. Secondary sources (status and dates only, never legal statements)
 
 - Lagos State House of Assembly news pages — legislative stage
 - Premium Times, Channels TV — stage and dates; where press figures conflict

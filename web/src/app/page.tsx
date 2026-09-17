@@ -125,6 +125,27 @@ function AnswerView({ answer, lang }: { answer: Answer; lang: Lang }) {
             <li key={i}>{b}</li>
           ))}
         </ul>
+        {answer.body.offices && (
+          <ul>
+            {answer.body.offices.map((o, i) => (
+              <li key={i}>
+                <strong>{o.area}</strong>
+                {o.address ? ` — ${o.address}` : ""}
+                {o.phone ? ` · ${o.phone}` : ""}
+              </li>
+            ))}
+          </ul>
+        )}
+        {answer.body.links?.map((l) => (
+          <p key={l.url}>
+            <a className="source-link" href={l.url} target="_blank" rel="noopener noreferrer">
+              {l.label} ↗
+            </a>
+          </p>
+        ))}
+        {answer.body.contact_verified && (
+          <p className="stamp">contacts verified {answer.body.contact_verified}</p>
+        )}
       </div>
 
       {answer.letter && (

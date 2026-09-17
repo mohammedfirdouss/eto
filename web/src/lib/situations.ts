@@ -60,6 +60,9 @@ export interface NamedBody {
   name: string;
   role: string;
   bring: string[];
+  offices?: { area: string; address?: string; phone?: string }[];
+  links?: { label: string; url: string }[];
+  contact_verified?: string | null;
 }
 
 export interface Answer {
