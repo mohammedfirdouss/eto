@@ -52,40 +52,35 @@ function factLines(facts: Facts): string[] {
 
 export function buildCaseFile(answer: Answer, facts: Facts, lang: Lang, date: string): string {
   const L = LABELS[lang];
-  const line = "=".repeat(64);
-  const thin = "-".repeat(64);
   const parts: string[] = [
-    line,
     `${L.title} — ${answer.situation.toUpperCase()} — ${date}`,
     L.prepared,
-    line,
     "",
     L.facts,
-    thin,
     ...factLines(facts),
     "",
   ];
   if (answer.computed.length > 0) {
-    parts.push(L.dates, thin);
+    parts.push(L.dates);
     for (const c of answer.computed) parts.push(`  ${c.label}: ${c.value}`);
     parts.push("");
   }
-  parts.push(`${L.inForce} — ${jurisdiction.law_citation}`, thin);
+  parts.push(`${L.inForce} — ${jurisdiction.law_citation}`);
   for (const p of answer.inForce.points) {
     parts.push(`  [${p.ref}] ${lang === "pcm" && p.pcm ? p.pcm : p.text}`);
   }
-  parts.push("", `${L.proposed} — ${jurisdiction.bill_citation}`, thin);
+  parts.push("", `${L.proposed} — ${jurisdiction.bill_citation}`);
   for (const p of answer.proposed.points) {
     parts.push(`  [${p.ref}] ${lang === "pcm" && p.pcm ? p.pcm : p.text}`);
   }
   if (answer.coverageNote) {
     parts.push("", `  NOTE: ${lang === "pcm" && answer.coverageNotePcm ? answer.coverageNotePcm : answer.coverageNote}`);
   }
-  parts.push("", `${L.nextStep}: ${answer.body.name}`, thin, `  ${answer.body.role}`, "", `  ${L.bring}:`);
+  parts.push("", `${L.nextStep}: ${answer.body.name}`, `  ${answer.body.role}`, "", `  ${L.bring}:`);
   for (const b of answer.body.bring) parts.push(`   - ${b}`);
   if (answer.altBody) {
     parts.push("", `  ${answer.altBody.name}`, `  ${answer.altBody.role}`);
   }
-  parts.push("", line, `Status verified ${answer.inForce.asOf} · ${L.prepared}`, line, "");
+  parts.push("", `Status verified ${answer.inForce.asOf} · ${L.prepared}`, "");
   return parts.join("\n");
 }

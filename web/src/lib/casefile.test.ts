@@ -39,3 +39,9 @@ describe("case file export", () => {
     expect(file).not.toContain("undefined");
   });
 });
+
+it("contains no divider rule lines", () => {
+  const answer = answerQuitNotice(FACTS);
+  const file = buildCaseFile(answer, FACTS, "en", "2026-09-17");
+  expect(file).not.toMatch(/={4,}|-{4,}/);
+});
