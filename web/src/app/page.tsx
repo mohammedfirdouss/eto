@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { corpusStatus, jurisdiction, resolveCitation, sourceUrls } from "../lib/corpus";
 import { Lang, situationLabel, t } from "../lib/i18n";
 import { retrieve, RetrievalResult } from "../lib/retrieval";
-import { Answer, EXCLUDED_AREAS, Facts, SITUATIONS, SituationId } from "../lib/situations";
+import { Answer, EXCLUDED_AREAS, Facts, NamedBody, SITUATIONS, SituationId } from "../lib/situations";
 import { daysBetween, TenancyType } from "../lib/rules";
 import myths from "../data/myths.json";
 import changes from "../data/changes.json";
@@ -84,6 +84,54 @@ function downloadText(filename: string, text: string) {
   URL.revokeObjectURL(a.href);
 }
 
+function BodyBlock({
+  body,
+  heading,
+  lang,
+}: {
+  body: NamedBody;
+  heading: string;
+  lang: Lang;
+}) {
+  return (
+    <div className="computed">
+      <strong>
+        {heading}: {body.name}
+      </strong>
+      <p>{body.role}</p>
+      <p>
+        <strong>{t("bring", lang)}</strong>
+      </p>
+      <ul>
+        {body.bring.map((b, i) => (
+          <li key={i}>{b}</li>
+        ))}
+      </ul>
+      {body.offices && (
+        <ul>
+          {body.offices.map((o, i) => (
+            <li key={i}>
+              <strong>{o.area}</strong>
+              {o.address ? ` — ${o.address}` : ""}
+              {o.phone ? ` · ${o.phone}` : ""}
+            </li>
+          ))}
+        </ul>
+      )}
+      {body.links?.map((l) => (
+        <p key={l.url}>
+          <a className="source-link" href={l.url} target="_blank" rel="noopener noreferrer">
+            {l.label} ↗
+          </a>
+        </p>
+      ))}
+      {body.contact_verified && (
+        <p className="stamp">contacts verified {body.contact_verified}</p>
+      )}
+    </div>
+  );
+}
+
 function AnswerView({ answer, lang }: { answer: Answer; lang: Lang }) {
   const coverageText =
     lang === "pcm" && answer.coverageNotePcm ? answer.coverageNotePcm : answer.coverageNote;
@@ -112,41 +160,10 @@ function AnswerView({ answer, lang }: { answer: Answer; lang: Lang }) {
         </div>
       )}
 
-      <div className="computed">
-        <strong>
-          {t("whereToGo", lang)}: {answer.body.name}
-        </strong>
-        <p>{answer.body.role}</p>
-        <p>
-          <strong>{t("bring", lang)}</strong>
-        </p>
-        <ul>
-          {answer.body.bring.map((b, i) => (
-            <li key={i}>{b}</li>
-          ))}
-        </ul>
-        {answer.body.offices && (
-          <ul>
-            {answer.body.offices.map((o, i) => (
-              <li key={i}>
-                <strong>{o.area}</strong>
-                {o.address ? ` — ${o.address}` : ""}
-                {o.phone ? ` · ${o.phone}` : ""}
-              </li>
-            ))}
-          </ul>
-        )}
-        {answer.body.links?.map((l) => (
-          <p key={l.url}>
-            <a className="source-link" href={l.url} target="_blank" rel="noopener noreferrer">
-              {l.label} ↗
-            </a>
-          </p>
-        ))}
-        {answer.body.contact_verified && (
-          <p className="stamp">contacts verified {answer.body.contact_verified}</p>
-        )}
-      </div>
+      <BodyBlock body={answer.body} heading={t("whereToGo", lang)} lang={lang} />
+      {answer.altBody && (
+        <BodyBlock body={answer.altBody} heading={t("altWhereToGo", lang)} lang={lang} />
+      )}
 
       {answer.letter && (
         <div>

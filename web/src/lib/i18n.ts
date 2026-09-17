@@ -69,6 +69,10 @@ const STRINGS = {
   billColumn: { en: "Under the bill", pcm: "Under the bill" },
   inForceStamp: { en: "In Force", pcm: "E Dey Work" },
   notLawStamp: { en: "Not Law Yet", pcm: "No Be Law Yet" },
+  altWhereToGo: {
+    en: "To recover money you already paid",
+    pcm: "To collect back money wey you don pay",
+  },
   situationLabels: {
     en: {
       "rent-increase": "My landlord increased my rent",
