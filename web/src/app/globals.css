@@ -348,6 +348,94 @@ form.facts textarea {
   margin: 1.2rem 0;
 }
 
+/* the Gap counter — 1000-reasons-style number-as-argument */
+.gap {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  border-top: 3px solid var(--rule);
+  border-bottom: 1px solid var(--line);
+  padding: 0.9rem 0;
+  margin: 1.4rem 0 0.4rem;
+}
+
+.gap-number {
+  font-size: 3.6rem;
+  font-weight: bold;
+  line-height: 1;
+  color: var(--warn);
+  font-variant-numeric: tabular-nums;
+}
+
+.gap-caption {
+  font-size: 1rem;
+  max-width: 24rem;
+}
+
+/* myth-vs-fact receipts */
+.myths {
+  display: grid;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.myth {
+  border: 1.5px solid var(--rule);
+  background: var(--card);
+  padding: 1rem 1.2rem;
+  box-shadow: 5px 5px 0 var(--line);
+}
+
+.myth:nth-child(odd) {
+  transform: rotate(-0.35deg);
+}
+
+.myth:nth-child(even) {
+  transform: rotate(0.35deg);
+}
+
+.myth-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 0.3rem;
+}
+
+.myth-num {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.myth-chip {
+  color: var(--muted);
+  border-color: var(--muted);
+}
+
+.myth-label {
+  display: block;
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.15rem;
+}
+
+.myth-heard {
+  font-style: italic;
+  color: var(--muted);
+  margin: 0.8rem 0 0.6rem;
+  text-decoration: line-through;
+  text-decoration-color: var(--warn);
+  text-decoration-thickness: 1.5px;
+}
+
+.myth-fact {
+  margin: 0.6rem 0;
+  font-weight: bold;
+}
+
 .disclaimer {
   margin-top: 2.5rem;
   padding-top: 0.8rem;

@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import myths from "../data/myths.json";
 import { resolveCitation } from "./corpus";
 import { answerQuitNotice, Facts, SITUATIONS } from "./situations";
 
@@ -48,7 +49,10 @@ describe("situations", () => {
     expect(a.letter).toBeDefined();
     expect(a.letter!.text).toContain("2027-03-01");
     expect(a.letter!.text).toContain("Test Tenant");
-    expect(a.letter!.text).toContain("not legal advice");
+    // the disclaimer lives in the UI at the point of download, never inside
+    // the letter itself — it would undercut the tenant's own document
+    expect(a.letter!.text).not.toContain("not legal advice");
+    expect(a.letter!.text).toContain("section 13(1)");
   });
 
   it("valid quit notice generates no dispute letter", () => {
@@ -71,6 +75,16 @@ describe("situations", () => {
     }
     const excluded = answerQuitNotice({ ...SAMPLE, excludedArea: true, areaName: "Ikoyi" });
     expect(excluded.coverageNotePcm).toContain("Ikoyi");
+  });
+
+  it("every myth card has both languages and resolvable citations", () => {
+    for (const m of myths.myths) {
+      expect(m.heard_en).toBeTruthy();
+      expect(m.fact_en).toBeTruthy();
+      expect(m.fact_pcm).toBeTruthy();
+      expect(m.refs.length).toBeGreaterThan(0);
+      for (const r of m.refs) expect(resolveCitation(r), `myth #${m.id}: ${r}`).toBeDefined();
+    }
   });
 
   it("agency fee over 5% is flagged against the bill only", () => {
