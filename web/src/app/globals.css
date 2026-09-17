@@ -49,6 +49,35 @@ main {
   padding: 2rem 1rem 4rem;
 }
 
+.langbar {
+  display: flex;
+  gap: 0;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+.langbtn {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.8rem;
+  border: 1.5px solid var(--rule);
+  background: var(--card);
+  color: var(--ink);
+  cursor: pointer;
+  border-radius: 0;
+}
+
+.langbtn + .langbtn {
+  border-left: none;
+}
+
+.langbtn.active {
+  background: var(--ink);
+  color: var(--paper);
+}
+
 .eyebrow {
   font-family: ui-monospace, Menlo, monospace;
   font-size: 0.72rem;
