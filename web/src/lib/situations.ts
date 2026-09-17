@@ -51,7 +51,7 @@ export interface Panel {
   heading: string;
   status: "IN_FORCE" | "PROPOSED_COMMITTEE";
   asOf: string;
-  points: { text: string; ref: string }[];
+  points: { text: string; ref: string; pcm?: string }[];
 }
 
 export interface NamedBody {
@@ -64,6 +64,7 @@ export interface NamedBody {
 export interface Answer {
   situation: SituationId;
   coverageNote?: string;
+  coverageNotePcm?: string;
   inForce: Panel;
   proposed: Panel;
   computed: { label: string; value: string }[];
@@ -80,9 +81,13 @@ function cite(ref: string): CorpusUnit {
   return unit;
 }
 
-function point(text: string, ref: string): { text: string; ref: string } {
+function point(
+  text: string,
+  ref: string,
+  pcm?: string,
+): { text: string; ref: string; pcm?: string } {
   cite(ref);
-  return { text, ref };
+  return { text, ref, pcm };
 }
 
 function getBody(id: string): NamedBody {
