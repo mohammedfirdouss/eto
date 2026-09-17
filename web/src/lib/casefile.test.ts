@@ -20,7 +20,7 @@ describe("case file export", () => {
     expect(file).toContain("[s.13]");
     expect(file).toContain("[cl.14]");
     expect(file).toContain("NOT LAW");
-    expect(file).toContain("Citizens Mediation Centre");
+    expect(file).toMatch(/Citizens.? Mediation/);
     expect(file).toContain("Status verified");
     expect(file).toContain("not legal advice");
   });

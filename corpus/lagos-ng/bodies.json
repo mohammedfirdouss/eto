@@ -3,7 +3,7 @@
   "bodies": [
     {
       "id": "cmc",
-      "name": "Lagos State Citizens Mediation Centre",
+      "name": "Lagos State Citizens' Mediation Centre (now Citizens' Mediation Bureau, CMB)",
       "role": "Free mediation of landlord–tenant disputes; no lawyer required. The Tenancy Law itself directs courts to promote mediation and amicable settlement (s.32; cl.36).",
       "bring": [
         "Proof of rent payment (receipts or transfers)",
@@ -13,42 +13,50 @@
       ],
       "offices": [
         {
-          "area": "Ikeja (Head Office)",
-          "address": "1 Motorways Centre, opposite 7up Bottling Company, Alausa-Ikeja",
-          "phone": "01-8790586"
+          "area": "Head Office (CBD Alausa, Ikeja)",
+          "address": "7 LJ Dosunmu Street, opposite Beehive School, CBD, Alausa-Ikeja",
+          "phone": "08118161620"
         },
         {
           "area": "Lagos Island",
-          "address": "18 King George V Road, Onikan",
-          "phone": "01-8958007"
+          "address": "16 King George V Road, Onikan",
+          "phone": "08161623237"
         },
         {
           "area": "Yaba",
           "address": "201 Herbert Macaulay Road, opposite Police Station, Adekunle",
-          "phone": "01-8963966"
+          "phone": "07044196250"
         },
         {
           "area": "Bariga",
           "address": "10 Akinsola Street, off Oloja Street",
-          "phone": "08163019351"
+          "phone": "09044848946"
         },
         {
           "area": "Ikorodu",
-          "address": "132 Lagos Road, Jumofak Bus-Stop"
+          "address": "32 Agbele Road, Igbogbo",
+          "phone": "07086547507"
         },
         {
           "area": "Ikotun",
-          "phone": "08190577722"
+          "address": "Igando/Ikotun Local Council Development Area",
+          "phone": "08182203224"
+        },
+        {
+          "area": "Oshodi",
+          "address": "22 Oyetayo Street, beside the Marriage Registry, Oshodi",
+          "phone": "07083504670"
         }
       ],
       "links": [
         {
-          "label": "All offices (Ministry of Justice)",
-          "url": "https://lagosministryofjustice.org/citizens-mediation-centre/"
+          "label": "All 18 offices + heads (Ministry of Justice)",
+          "url": "https://lagosstatemoj.org/cmc/"
         }
       ],
-      "contact_source": "https://lagosministryofjustice.org/citizens-mediation-centre/",
-      "contact_verified": "2026-09-17"
+      "contact_source": "https://lagosstatemoj.org/cmc/",
+      "contact_verified": "2026-09-17",
+      "contact_note": "Two official MoJ sites list different details; the newer site (lagosstatemoj.org, 'Citizens' Mediation Bureau') carries current mobile numbers and named office heads and is used here. The older site (lagosministryofjustice.org) still lists superseded addresses and 01- landlines. Email: cmcikeja01@gmail.com · Hotline: 08118161620"
     },
     {
       "id": "lasrera",
@@ -70,7 +78,7 @@
       ],
       "contact_source": "https://lasrera.lagosstate.gov.ng/",
       "contact_verified": null,
-      "contact_note": "Official site (lasrera.lagosstate.gov.ng) failed DNS resolution from two independent networks on 2026-09-17 — the domain appears to be down. URLs recorded for when it returns; phone numbers omitted until verifiable from an official page."
+      "contact_note": "Official domain lasrera.lagosstate.gov.ng has no DNS record as of 2026-09-17 (checked from two networks; spelling matches LASRERA's own search-indexed URLs, so this is an outage, not a typo). URLs kept for when it returns; phone numbers omitted until verifiable from an official page."
     },
     {
       "id": "magistrate-court",

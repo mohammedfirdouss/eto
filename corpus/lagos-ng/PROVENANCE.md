@@ -55,9 +55,16 @@ until proofread against the PDF. Completeness is validated in-script: 49/49 sect
 
 ## 4. Named bodies — contact information
 
-- **Citizens Mediation Centre** offices and phone numbers: taken verbatim from the Lagos
-  State Ministry of Justice page (https://lagosministryofjustice.org/citizens-mediation-centre/),
-  verified 2026-09-17. Rendered in the app with a "contacts verified" stamp.
+- **Citizens' Mediation Centre / Bureau**: two official Ministry of Justice sites
+  disagree. The older page (https://lagosministryofjustice.org/citizens-mediation-centre/)
+  lists "1 Motorways Centre" and 01- landlines; the newer site
+  (https://lagosstatemoj.org/cmc/) shows the body renamed **Citizens' Mediation Bureau**,
+  a new head office (7 LJ Dosunmu Street, CBD Alausa), 18 sub-offices with named heads
+  and mobile numbers, email and hotline. Both were re-scraped via Firecrawl on
+  2026-09-17; every line of the older list matched its page verbatim, and the newer
+  site's table is used in the app as the more current record, with the conflict noted in
+  `bodies.json`. This is the project's own thesis in miniature: even the mediation
+  service's contact details exist in two conflicting official versions.
 - **LASRERA**: official site (https://lasrera.lagosstate.gov.ng/) was unreachable at
   verification time. We record only its URLs (site + Practitioner Search) and omit phone
   numbers that could not be read from an official page. `contact_verified: null` in
