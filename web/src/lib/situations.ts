@@ -73,6 +73,8 @@ export interface Answer {
   proposed: Panel;
   computed: { label: string; value: string }[];
   body: NamedBody;
+  /** optional second destination, e.g. Small Claims for money recovery */
+  altBody?: NamedBody;
   letter?: { title: string; text: string };
 }
 
@@ -390,6 +392,7 @@ export function answerAgencyFee(facts: Facts): Answer {
           ]
         : [],
     body: getBody("lasrera"),
+    altBody: getBody("small-claims"),
     letter: {
       title: "Complaint to LASRERA about an agent",
       text: `${today()}
