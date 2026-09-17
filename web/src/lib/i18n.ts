@@ -73,6 +73,10 @@ const STRINGS = {
     en: "To recover money you already paid",
     pcm: "To collect back money wey you don pay",
   },
+  downloadCaseFile: {
+    en: "Download your case file (for the Mediation Centre)",
+    pcm: "Download your case file (make you carry go Mediation Centre)",
+  },
   situationLabels: {
     en: {
       "rent-increase": "My landlord increased my rent",

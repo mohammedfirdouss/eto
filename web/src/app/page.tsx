@@ -6,6 +6,7 @@ import { Lang, situationLabel, t } from "../lib/i18n";
 import { retrieve, RetrievalResult } from "../lib/retrieval";
 import { Answer, EXCLUDED_AREAS, Facts, NamedBody, SITUATIONS, SituationId } from "../lib/situations";
 import { daysBetween, TenancyType } from "../lib/rules";
+import { buildCaseFile } from "../lib/casefile";
 import myths from "../data/myths.json";
 import changes from "../data/changes.json";
 
@@ -132,7 +133,7 @@ function BodyBlock({
   );
 }
 
-function AnswerView({ answer, lang }: { answer: Answer; lang: Lang }) {
+function AnswerView({ answer, facts, lang }: { answer: Answer; facts: Facts; lang: Lang }) {
   const coverageText =
     lang === "pcm" && answer.coverageNotePcm ? answer.coverageNotePcm : answer.coverageNote;
   return (
@@ -164,6 +165,18 @@ function AnswerView({ answer, lang }: { answer: Answer; lang: Lang }) {
       {answer.altBody && (
         <BodyBlock body={answer.altBody} heading={t("altWhereToGo", lang)} lang={lang} />
       )}
+
+      <button
+        className="primary"
+        onClick={() =>
+          downloadText(
+            `eto-case-file-${answer.situation}.txt`,
+            buildCaseFile(answer, facts, lang, new Date().toISOString().slice(0, 10)),
+          )
+        }
+      >
+        {t("downloadCaseFile", lang)}
+      </button>
 
       {answer.letter && (
         <div>
@@ -525,6 +538,7 @@ function MythCards({ lang }: { lang: Lang }) {
 export default function Home() {
   const [situation, setSituation] = useState<SituationId | null>(null);
   const [answer, setAnswer] = useState<Answer | null>(null);
+  const [facts, setFacts] = useState<Facts>({});
   const [lang, setLang] = useState<Lang>("en");
   const active = useMemo(() => SITUATIONS.find((s) => s.id === situation), [situation]);
 
@@ -588,7 +602,10 @@ export default function Home() {
           <FactsForm
             situation={situation}
             lang={lang}
-            onSubmit={(f) => setAnswer(active.answer(f))}
+            onSubmit={(f) => {
+              setFacts(f);
+              setAnswer(active.answer(f));
+            }}
           />
         </>
       )}
@@ -605,7 +622,7 @@ export default function Home() {
             {t("startOver", lang)}
           </button>
           <h2>{situationLabel(active.id, lang)}</h2>
-          <AnswerView answer={answer} lang={lang} />
+          <AnswerView answer={answer} facts={facts} lang={lang} />
         </>
       )}
 
