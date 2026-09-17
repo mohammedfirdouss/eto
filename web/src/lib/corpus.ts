@@ -57,6 +57,12 @@ export const allUnits: CorpusUnit[] = [...lawUnits, ...billUnits];
 
 export const corpusStatus = status;
 
+/** Official source of each document, for "verify it yourself" links. */
+export const sourceUrls: Record<string, string> = {
+  [law.id]: law.source_url,
+  [bill.id]: bill.source_url,
+};
+
 /**
  * Resolve a citation ref (e.g. "s.13", "cl.44") to its corpus unit.
  * Returns undefined for anything that does not exist — callers must treat an

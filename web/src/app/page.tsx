@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { corpusStatus, resolveCitation } from "../lib/corpus";
+import { corpusStatus, resolveCitation, sourceUrls } from "../lib/corpus";
 import { Lang, situationLabel, t } from "../lib/i18n";
 import { retrieve, RetrievalResult } from "../lib/retrieval";
 import { Answer, EXCLUDED_AREAS, Facts, SITUATIONS, SituationId } from "../lib/situations";
@@ -28,6 +28,14 @@ function Cite({ refStr }: { refStr: string }) {
           <span className="verbatim" style={{ display: "block" }}>
             {unit.text}
           </span>
+          <a
+            className="source-link"
+            href={sourceUrls[unit.docId]}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Open the official source ↗
+          </a>
         </span>
       )}
     </span>
@@ -341,6 +349,10 @@ function GapCounter({ lang }: { lang: Lang }) {
   const days = daysBetween(SECOND_READING, new Date().toISOString().slice(0, 10));
   const [shown, setShown] = useState(0);
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setShown(days);
+      return;
+    }
     const started = performance.now();
     let raf = 0;
     const tick = (now: number) => {
@@ -480,7 +492,7 @@ export default function Home() {
   const active = useMemo(() => SITUATIONS.find((s) => s.id === situation), [situation]);
 
   return (
-    <main>
+    <main lang={lang === "pcm" ? "pcm" : "en"}>
       <div className="langbar" role="group" aria-label="Language">
         <button
           className={`langbtn ${lang === "en" ? "active" : ""}`}

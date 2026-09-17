@@ -273,6 +273,23 @@ form.facts textarea {
   outline: none;
 }
 
+.source-link {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 0.78rem;
+  color: var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .situations button {
+    transition: none;
+  }
+
+  .situations button:hover,
+  .situations button:focus-visible {
+    transform: none;
+  }
+}
+
 .verbatim {
   border: 1.5px dashed var(--rule);
   background: var(--paper);
