@@ -1,0 +1,35 @@
+{
+  "as_of": "2026-09-17",
+  "bodies": [
+    {
+      "id": "cmc",
+      "name": "Lagos State Citizens Mediation Centre",
+      "role": "Free mediation of landlord–tenant disputes; no lawyer required. The Tenancy Law itself directs courts to promote mediation and amicable settlement (s.32; cl.36).",
+      "bring": [
+        "Proof of rent payment (receipts or transfers)",
+        "Your tenancy agreement, if you have one",
+        "Any notice or letter your landlord served you",
+        "Recent utility bills for the premises"
+      ]
+    },
+    {
+      "id": "lasrera",
+      "name": "LASRERA (Lagos State Real Estate Regulatory Authority)",
+      "role": "Registers estate agents and takes complaints against them. Check registration before paying any agent fee.",
+      "bring": [
+        "The agent's name and, if known, registration details",
+        "Evidence of the fee demanded or paid (message, receipt, transfer)"
+      ]
+    },
+    {
+      "id": "magistrate-court",
+      "name": "Magistrate Court (of the division where the premises are)",
+      "role": "Hears recovery-of-premises proceedings. Only a court order can lawfully put a tenant out — self-help eviction is an offence (s.44; cl.43).",
+      "bring": [
+        "Proof of rent payment and updated utility bills",
+        "Tenancy agreement and all notices served or received",
+        "Your incident record, if there was a lock-out or threat"
+      ]
+    }
+  ]
+}
