@@ -336,9 +336,21 @@ function FreeTextAsk({ lang }: { lang: Lang }) {
 /** The thesis as a number: how long "reform" has been headlines, not law. */
 function GapCounter({ lang }: { lang: Lang }) {
   const days = daysBetween(SECOND_READING, new Date().toISOString().slice(0, 10));
+  const [shown, setShown] = useState(0);
+  useEffect(() => {
+    const started = performance.now();
+    let raf = 0;
+    const tick = (now: number) => {
+      const p = Math.min((now - started) / 900, 1);
+      setShown(Math.round(days * (1 - Math.pow(1 - p, 3))));
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [days]);
   return (
-    <div className="gap" role="note">
-      <span className="gap-number">{days}</span>
+    <div className="gap" role="note" aria-label={`${days} ${t("gapSince", lang)}`}>
+      <span className="gap-number">{shown}</span>
       <span className="gap-caption">
         {t("gapSince", lang)}
         <span className="stamp" style={{ display: "block" }}>
