@@ -1,32 +1,32 @@
 :root {
-  --bg: #ffffff;
-  --fg: #1a1a1a;
-  --muted: #555;
-  --line: #d7d7d7;
-  --accent: #0a6b3d;
-  --accent-fg: #ffffff;
-  --inforce-bg: #eef7f0;
-  --inforce-line: #0a6b3d;
-  --proposed-bg: #fdf3e3;
-  --proposed-line: #a8630a;
+  --paper: #f7f4ee;
+  --ink: #171512;
+  --muted: #6b6459;
+  --line: #d9d2c4;
+  --rule: #171512;
+  --card: #fffdf8;
+  --inforce: #0a6b3d;
+  --inforce-tint: #eef4ec;
+  --proposed: #a8630a;
+  --proposed-tint: #f8f0e0;
   --warn: #b00020;
-  --card: #fafafa;
+  --accent: #0a6b3d;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #121212;
-    --fg: #ececec;
-    --muted: #a5a5a5;
-    --line: #3a3a3a;
-    --accent: #4cc38a;
-    --accent-fg: #10241a;
-    --inforce-bg: #16261c;
-    --inforce-line: #4cc38a;
-    --proposed-bg: #2b2113;
-    --proposed-line: #e0a458;
+    --paper: #16140f;
+    --ink: #ece7dc;
+    --muted: #a49b8a;
+    --line: #3b372e;
+    --rule: #ece7dc;
+    --card: #1e1b15;
+    --inforce: #4cc38a;
+    --inforce-tint: #182018;
+    --proposed: #e0a458;
+    --proposed-tint: #241d10;
     --warn: #ff6b6b;
-    --card: #1c1c1c;
+    --accent: #4cc38a;
   }
 }
 
@@ -36,8 +36,8 @@
 
 body {
   margin: 0;
-  background: var(--bg);
-  color: var(--fg);
+  background: var(--paper);
+  color: var(--ink);
   font-family: Georgia, "Times New Roman", serif;
   line-height: 1.55;
   font-size: 17px;
@@ -46,57 +46,98 @@ body {
 main {
   max-width: 46rem;
   margin: 0 auto;
-  padding: 1.25rem 1rem 4rem;
+  padding: 2rem 1rem 4rem;
+}
+
+.eyebrow {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 0.4rem;
 }
 
 h1 {
-  font-size: 2rem;
-  margin: 0.5rem 0 0.2rem;
+  font-size: 3.4rem;
+  line-height: 1;
+  margin: 0 0 0.4rem;
+  letter-spacing: -0.01em;
+}
+
+h1 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+h2 {
+  font-size: 1.6rem;
+  margin: 1.6rem 0 0.6rem;
+  padding-top: 0.8rem;
+  border-top: 3px solid var(--rule);
 }
 
 .tagline {
   color: var(--muted);
   margin-top: 0;
+  font-style: italic;
 }
 
+/* receipt-style verification banner */
 .status-banner {
-  border: 1px solid var(--line);
+  border: 1.5px solid var(--rule);
   background: var(--card);
-  padding: 0.6rem 0.9rem;
-  font-size: 0.9rem;
-  margin: 1rem 0;
+  padding: 0.9rem 1.1rem;
+  margin: 1.4rem 0;
+  box-shadow: 4px 4px 0 var(--line);
+}
+
+.status-banner .stamp {
+  display: block;
+  margin-top: 0.4rem;
 }
 
 .situations {
   display: grid;
-  gap: 0.6rem;
+  gap: 0.7rem;
   margin: 1.2rem 0;
 }
 
-.situations button,
-button.primary {
+.situations button {
   font: inherit;
+  font-weight: bold;
   text-align: left;
-  padding: 0.8rem 1rem;
-  border: 1.5px solid var(--line);
+  padding: 0.9rem 1.1rem;
+  border: 2px solid var(--rule);
   background: var(--card);
-  color: var(--fg);
+  color: var(--ink);
   cursor: pointer;
-  border-radius: 6px;
+  border-radius: 0;
+  transition: transform 60ms ease, box-shadow 60ms ease;
 }
 
 .situations button:hover,
 .situations button:focus-visible {
-  border-color: var(--accent);
-  outline: 2px solid var(--accent);
-  outline-offset: 1px;
+  outline: none;
+  box-shadow: 4px 4px 0 var(--rule);
+  transform: translate(-2px, -2px);
 }
 
 button.primary {
-  background: var(--accent);
-  color: var(--accent-fg);
-  border-color: var(--accent);
+  font: inherit;
   font-weight: bold;
+  padding: 0.7rem 1.3rem;
+  border: 2px solid var(--rule);
+  background: var(--ink);
+  color: var(--paper);
+  cursor: pointer;
+  border-radius: 0;
+}
+
+button.primary:hover,
+button.primary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 button.linklike {
@@ -111,98 +152,149 @@ button.linklike {
 
 form.facts {
   display: grid;
-  gap: 0.8rem;
+  gap: 0.9rem;
   margin: 1rem 0;
   max-width: 30rem;
 }
 
 form.facts label {
   display: grid;
-  gap: 0.2rem;
+  gap: 0.25rem;
   font-size: 0.95rem;
+  font-weight: bold;
 }
 
 form.facts input,
 form.facts select,
 form.facts textarea {
   font: inherit;
-  padding: 0.45rem 0.6rem;
-  border: 1.5px solid var(--line);
-  border-radius: 4px;
-  background: var(--bg);
-  color: var(--fg);
+  font-weight: normal;
+  padding: 0.5rem 0.65rem;
+  border: 1.5px solid var(--rule);
+  border-radius: 0;
+  background: var(--card);
+  color: var(--ink);
 }
 
+/* dual panels — numbered-card grid language */
 .panel {
-  border-left: 5px solid;
-  padding: 0.8rem 1rem;
-  margin: 1rem 0;
-  border-radius: 0 6px 6px 0;
+  border: 1.5px solid var(--line);
+  border-top: 6px solid;
+  background: var(--card);
+  padding: 1rem 1.2rem;
+  margin: 1.2rem 0;
 }
 
 .panel.inforce {
-  background: var(--inforce-bg);
-  border-color: var(--inforce-line);
+  border-top-color: var(--inforce);
 }
 
 .panel.proposed {
-  background: var(--proposed-bg);
-  border-color: var(--proposed-line);
+  border-top-color: var(--proposed);
+}
+
+.chip {
+  display: inline-block;
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border: 1.5px solid;
+  padding: 0.15rem 0.55rem;
+  margin-bottom: 0.3rem;
+}
+
+.panel.inforce .chip {
+  color: var(--inforce);
+  border-color: var(--inforce);
+  background: var(--inforce-tint);
+}
+
+.panel.proposed .chip {
+  color: var(--proposed);
+  border-color: var(--proposed);
+  background: var(--proposed-tint);
 }
 
 .panel h3 {
-  margin: 0 0 0.2rem;
-  font-size: 1.05rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  margin: 0.2rem 0 0.1rem;
+  font-size: 1.25rem;
 }
 
 .stamp {
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   color: var(--muted);
   font-family: ui-monospace, Menlo, monospace;
+  letter-spacing: 0.04em;
 }
 
 .panel ul {
-  margin: 0.5rem 0 0;
+  margin: 0.7rem 0 0;
   padding-left: 1.1rem;
 }
 
 .panel li {
-  margin: 0.45rem 0;
+  margin: 0.5rem 0;
 }
 
 .cite {
-  font-size: 0.85rem;
-  white-space: nowrap;
+  font-size: 0.8rem;
+}
+
+.cite > button {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 0.78rem;
+  border: 1.5px solid var(--rule);
+  background: var(--card);
+  color: var(--ink);
+  padding: 0.05rem 0.4rem;
+  cursor: pointer;
+  text-decoration: none;
+  border-radius: 0;
+}
+
+.cite > button:hover,
+.cite > button:focus-visible {
+  background: var(--ink);
+  color: var(--paper);
+  outline: none;
 }
 
 .verbatim {
-  border: 1px dashed var(--line);
-  background: var(--bg);
+  border: 1.5px dashed var(--rule);
+  background: var(--paper);
   padding: 0.7rem 0.9rem;
   margin: 0.5rem 0;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   white-space: pre-wrap;
   max-height: 22rem;
   overflow-y: auto;
+  font-weight: normal;
 }
 
 .computed {
-  border: 1px solid var(--line);
+  border: 1.5px solid var(--rule);
   background: var(--card);
-  padding: 0.8rem 1rem;
-  margin: 1rem 0;
-  border-radius: 6px;
+  padding: 0.9rem 1.1rem;
+  margin: 1.2rem 0;
+  box-shadow: 4px 4px 0 var(--line);
+}
+
+.computed > strong {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 .computed dt {
   font-weight: bold;
-  margin-top: 0.5rem;
+  margin-top: 0.6rem;
 }
 
 .computed dd {
   margin: 0.1rem 0 0;
+  font-size: 1.05rem;
 }
 
 .computed .short {
@@ -211,35 +303,28 @@ form.facts textarea {
 }
 
 .letter {
-  border: 1px solid var(--line);
+  border: 1.5px solid var(--rule);
   background: var(--card);
-  padding: 1rem;
+  padding: 1.1rem;
   margin: 1rem 0;
   white-space: pre-wrap;
   font-size: 0.92rem;
-  border-radius: 6px;
 }
 
-.coverage {
-  border: 1.5px solid var(--warn);
-  padding: 0.8rem 1rem;
-  margin: 1rem 0;
-  border-radius: 6px;
+.coverage,
+.refusal {
+  border: 2px solid var(--warn);
+  background: var(--card);
+  padding: 0.9rem 1.1rem;
+  margin: 1.2rem 0;
 }
 
 .disclaimer {
   margin-top: 2.5rem;
   padding-top: 0.8rem;
-  border-top: 1px solid var(--line);
+  border-top: 3px solid var(--rule);
   font-size: 0.85rem;
   color: var(--muted);
-}
-
-.refusal {
-  border: 1.5px solid var(--warn);
-  padding: 0.8rem 1rem;
-  margin: 1rem 0;
-  border-radius: 6px;
 }
 
 .asktext {
@@ -251,9 +336,9 @@ form.facts textarea {
 .asktext input {
   flex: 1;
   font: inherit;
-  padding: 0.5rem 0.7rem;
-  border: 1.5px solid var(--line);
-  border-radius: 4px;
-  background: var(--bg);
-  color: var(--fg);
+  padding: 0.55rem 0.75rem;
+  border: 1.5px solid var(--rule);
+  border-radius: 0;
+  background: var(--card);
+  color: var(--ink);
 }

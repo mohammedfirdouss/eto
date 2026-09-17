@@ -37,6 +37,7 @@ function Cite({ refStr }: { refStr: string }) {
 function PanelView({ panel, kind }: { panel: Answer["inForce"]; kind: "inforce" | "proposed" }) {
   return (
     <section className={`panel ${kind}`} aria-label={panel.heading}>
+      <span className="chip">{kind === "inforce" ? "Law · In Force" : "Bill · Not Law Yet"}</span>
       <h3>{panel.heading}</h3>
       <span className="stamp">
         {panel.status === "IN_FORCE"
@@ -311,7 +312,10 @@ export default function Home() {
 
   return (
     <main>
-      <h1>Ẹ̀tọ́</h1>
+      <p className="eyebrow">Lagos · Tenancy Rights · Law vs Bill</p>
+      <h1>
+        Ẹ̀<em>tọ́</em>
+      </h1>
       <p className="tagline">
         Know the law that actually applies to you today. <em>Ẹ̀tọ́</em> (Yoruba): right,
         entitlement, what is due to you.
