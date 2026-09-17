@@ -93,3 +93,14 @@ describe("situations", () => {
     expect(a.computed.find((c) => c.label.includes("bill"))?.value).toContain("exceed");
   });
 });
+
+describe("changes ledger", () => {
+  it("every row's citations resolve on both sides", async () => {
+    const changes = (await import("../data/changes.json")).default;
+    for (const c of changes.changes) {
+      expect(resolveCitation(c.law_ref), `#${c.id} law`).toBeDefined();
+      expect(resolveCitation(c.bill_ref), `#${c.id} bill`).toBeDefined();
+      expect(c.bill_pcm).toBeTruthy();
+    }
+  });
+});
