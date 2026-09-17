@@ -35,6 +35,17 @@ npm run dev        # http://localhost:3000
 npm test           # 30 unit tests: retrieval, rules engine, situations
 ```
 
+## Repo structure
+
+```
+corpus/lagos-ng/     the jurisdiction pack: statute + bill (sources, hashes,
+                     section JSON), bodies, myths, changes ledger, PROVENANCE.md
+web/                 Next.js app — UI, BM25 retrieval, rules engine, tests
+tools/               corpus extraction pipeline (split_corpus.py)
+docs/                submission material: written summary, AI-usage log
+ETO.md               the build plan this project follows
+```
+
 ## How it's built
 
 - `corpus/lagos-ng/` — the jurisdiction pack: gazette PDF of the 2011 Law and the
