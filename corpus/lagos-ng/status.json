@@ -1,0 +1,23 @@
+{
+  "jurisdiction": "lagos-ng",
+  "as_of": "2026-09-17",
+  "documents": [
+    {
+      "id": "lagos-tenancy-law-2011",
+      "citation": "Tenancy Law, Cap. T1, Laws of Lagos State 2015 (Law No. 14 of 2011)",
+      "status": "IN_FORCE",
+      "coverage_note": "Does not apply in Apapa, Ikeja GRA, Ikoyi, Victoria Island (s.1(3)) or to institutional housing (s.1(2))."
+    },
+    {
+      "id": "lagos-tenancy-bill-2025",
+      "citation": "Lagos State Tenancy and Recovery of Premises Bill, 2025 (draft)",
+      "status": "PROPOSED_COMMITTEE",
+      "stage": "Committee on Housing",
+      "stage_history": [
+        { "event": "Second reading", "date": "2025-07-10" },
+        { "event": "Public hearing", "date": "2025-08" }
+      ],
+      "coverage_note": "Would apply to all premises in Lagos State; no area exemptions (cl.2). Repeals Cap. T1 (cl.44)."
+    }
+  ]
+}
