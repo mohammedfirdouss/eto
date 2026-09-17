@@ -45,6 +45,9 @@ function PanelView({
 }) {
   return (
     <section className={`panel ${kind}`} aria-label={panel.heading}>
+      <span className="stamp-mark" aria-hidden="true">
+        {t(kind === "inforce" ? "inForceStamp" : "notLawStamp", lang)}
+      </span>
       <span className="chip">
         {t(kind === "inforce" ? "inForceChip" : "proposedChip", lang)}
       </span>
