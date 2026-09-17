@@ -3,3 +3,7 @@ node_modules/
 *.log
 .DS_Store
 .env*
+
+# submission drafts stay local until ready
+docs/AI-USAGE.md
+docs/SUBMISSION.md
