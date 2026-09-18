@@ -1,0 +1,954 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+<title>Ẹ̀tọ́ — Pitch Deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,700;1,900&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Ẹ̀TỌ́ — PITCH DECK (paper & ink, law-green vs bill-amber)
+   */
+
+  :root {
+    --ink: #171512;
+    --paper: #f7f4ee;
+    --law: #0a6b3d;
+    --law-bright: #4cc38a;
+    --bill: #a8630a;
+    --bill-bright: #e0a458;
+    --warn: #b00020;
+    --warn-bright: #ff8a8a;
+    --rule: rgba(23,21,18,0.15);
+    --rule-dark: rgba(247,244,238,0.15);
+    --tint-light: rgba(23,21,18,0.05);
+    --tint-dark:  rgba(247,244,238,0.05);
+    --serif-display: "Playfair Display", "Times New Roman", serif;
+    --serif-body: "Source Serif 4", Georgia, serif;
+    --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    width: 100%; height: 100%;
+    overflow: hidden;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--serif-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    touch-action: none;
+    overscroll-behavior: none;
+  }
+
+  .magazine {
+    display: flex;
+    width: 1200vw;
+    height: 100vh;
+    transform: translateX(0);
+    transition: transform 820ms cubic-bezier(.7,.02,.2,1);
+    will-change: transform;
+  }
+
+  .page {
+    position: relative;
+    flex: 0 0 100vw;
+    width: 100vw; height: 100vh;
+    overflow: hidden;
+  }
+
+  .page.light { background: var(--paper); color: var(--ink); }
+  .page.dark  { background: var(--ink);   color: var(--paper); }
+
+  .page.light .accent-law  { color: var(--law); }
+  .page.dark  .accent-law  { color: var(--law-bright); }
+  .page.light .accent-bill { color: var(--bill); }
+  .page.dark  .accent-bill { color: var(--bill-bright); }
+  .page.light .accent-warn { color: var(--warn); }
+  .page.dark  .accent-warn { color: var(--warn-bright); }
+
+  .rail-top, .rail-bot {
+    position: absolute; left: 0; right: 0;
+    padding: 2vh 4.2vw;
+    font-family: var(--mono);
+    font-size: clamp(10px, min(0.8vw, 1.4vh), 13px);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    display: flex; justify-content: space-between; align-items: center;
+    z-index: 10; opacity: 0.8;
+  }
+  .rail-top { top: 0; border-bottom: 1px solid var(--rule); }
+  .rail-bot { bottom: 0; border-top: 1px solid var(--rule); }
+  .page.dark .rail-top { border-bottom-color: var(--rule-dark); }
+  .page.dark .rail-bot { border-top-color:   var(--rule-dark); }
+  .rail-sep { opacity: 0.4; margin: 0 1.1ch; }
+
+  .spread {
+    position: absolute;
+    inset: 7vh 0 7vh 0;
+    display: grid;
+    grid-template-columns: 55fr 45fr;
+    z-index: 2;
+  }
+  .spread::before {
+    content: "";
+    position: absolute; top: 4vh; bottom: 4vh; left: 55%;
+    width: 1px; background: var(--rule);
+  }
+  .page.dark .spread::before { background: var(--rule-dark); }
+
+  .pane {
+    position: relative;
+    padding: 4vh 4.2vw;
+    display: flex; flex-direction: column; gap: 3vh;
+    overflow: hidden;
+  }
+  .pane.left { padding-right: 3.2vw; }
+  .pane.right { padding-left: 3.6vw; }
+
+  .ghost-num {
+    position: absolute; left: -1vw; bottom: -2vh;
+    font-family: var(--serif-display);
+    font-weight: 900; font-style: italic;
+    font-size: clamp(120px, min(35vw, 60vh), 450px);
+    line-height: 0.8; letter-spacing: -0.04em;
+    color: currentColor; opacity: 0.04;
+    pointer-events: none; user-select: none; z-index: 0;
+  }
+  .page.dark .ghost-num { opacity: 0.06; }
+
+  .tag {
+    font-family: var(--mono);
+    font-weight: 500;
+    font-size: clamp(10px, min(0.9vw, 1.6vh), 14px);
+    letter-spacing: 0.22em; text-transform: uppercase;
+    display: inline-flex; align-items: center; gap: 0.9ch;
+    margin-bottom: 1.5vh; z-index: 2;
+  }
+  .tag::before { content: ""; width: 1.4ch; height: 1px; background: currentColor; display: inline-block; }
+
+  .head {
+    font-family: var(--serif-display);
+    font-weight: 700;
+    font-size: clamp(28px, min(4.5vw, 6.5vh), 75px);
+    line-height: 1.05; letter-spacing: -0.015em;
+    margin-bottom: 2vh; z-index: 2;
+  }
+  .head em { font-style: italic; font-weight: 500; }
+
+  .body {
+    font-family: var(--serif-body);
+    font-size: clamp(14px, min(1.3vw, 2.4vh), 20px);
+    line-height: 1.5; opacity: 0.88;
+    max-width: 44ch; z-index: 2;
+  }
+  .body p + p { margin-top: 1.1em; }
+  .body strong { font-weight: 600; }
+
+  .metric-block { z-index: 2; margin-bottom: 2vh; }
+  .metric-label {
+    font-family: var(--mono);
+    font-size: clamp(10px, min(0.8vw, 1.5vh), 13px);
+    letter-spacing: 0.22em; text-transform: uppercase;
+    opacity: 0.72; margin-bottom: 1vh;
+  }
+  .metric {
+    font-family: var(--serif-display);
+    font-weight: 800;
+    font-size: clamp(50px, min(8vw, 14vh), 160px);
+    line-height: 0.9; letter-spacing: -0.035em;
+    margin-bottom: 1.5vh;
+  }
+  .metric.italic { font-style: italic; font-weight: 600; }
+  .metric-caption {
+    font-family: var(--serif-body);
+    font-style: italic;
+    font-size: clamp(13px, min(1.1vw, 2vh), 18px);
+    line-height: 1.4; opacity: 0.78; max-width: 34ch;
+  }
+
+  .ai-tag {
+    font-family: var(--mono);
+    font-size: clamp(10px, min(0.9vw, 1.6vh), 14px);
+    letter-spacing: 0.22em; text-transform: uppercase;
+    opacity: 0.9; margin-bottom: 2vh;
+    display: flex; align-items: center; gap: 0.9ch;
+  }
+  .ai-tag::before { content: "■"; font-size: 0.75em; opacity: 0.8; }
+
+  .callout {
+    background: var(--tint-light);
+    border-left: 4px solid currentColor;
+    padding: 2.5vh 2vw;
+    font-family: var(--serif-body);
+    z-index: 2; margin-top: auto;
+  }
+  .page.dark .callout { background: var(--tint-dark); }
+  .callout-title {
+    font-family: var(--mono);
+    font-size: clamp(10px, min(0.8vw, 1.5vh), 13px);
+    font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+    margin-bottom: 1.2vh; opacity: 0.95;
+  }
+  .callout-body {
+    font-size: clamp(13px, min(1vw, 2vh), 17px);
+    line-height: 1.45; opacity: 0.85;
+  }
+
+  /* COVER */
+  .cover {
+    position: absolute; inset: 0;
+    padding: 8vh 4.2vw;
+    display: flex; flex-direction: column; justify-content: space-between;
+    z-index: 2;
+  }
+  .cover-top {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    font-family: var(--mono);
+    font-size: clamp(10px, min(0.8vw, 1.5vh), 13px);
+    letter-spacing: 0.2em; text-transform: uppercase;
+    opacity: 0.85;
+    padding-bottom: 2.5vh;
+    border-bottom: 1px solid var(--rule-dark);
+  }
+  .cover-top .masthead-logo {
+    font-family: var(--serif-display);
+    font-weight: 900;
+    font-size: clamp(28px, min(4vw, 5.5vh), 70px);
+    letter-spacing: -0.02em; line-height: 0.9;
+    text-transform: none;
+  }
+  .cover-top .masthead-logo em { font-style: italic; color: var(--law-bright); }
+  .cover-top .masthead-meta { text-align: right; line-height: 1.7; }
+  .cover-middle { display: flex; flex-direction: column; justify-content: center; flex: 1; padding: 4vh 0; }
+  .cover-deck {
+    font-family: var(--mono);
+    font-size: clamp(10px, min(0.9vw, 1.6vh), 14px);
+    letter-spacing: 0.28em; text-transform: uppercase;
+    opacity: 0.78; margin-bottom: 3vh;
+  }
+  .cover-title {
+    font-family: var(--serif-display);
+    font-weight: 800;
+    font-size: clamp(42px, min(7.5vw, 12vh), 140px);
+    line-height: 0.98; letter-spacing: -0.03em;
+    margin-bottom: 3vh;
+  }
+  .cover-title em { font-style: italic; font-weight: 600; color: var(--law-bright); }
+  .cover-sub {
+    font-family: var(--serif-body); font-style: italic;
+    font-size: clamp(15px, min(1.6vw, 2.8vh), 28px);
+    line-height: 1.4; max-width: 52ch; opacity: 0.85;
+  }
+  .cover-bot {
+    display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 4vw;
+    padding-top: 3vh; border-top: 1px solid var(--rule-dark);
+    font-family: var(--mono);
+    font-size: clamp(10px, min(0.8vw, 1.4vh), 13px);
+    letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.85;
+  }
+  .cover-bot .cell .k { display: block; opacity: 0.55; margin-bottom: 0.7em; }
+  .cover-bot .cell .v {
+    font-family: var(--serif-display); font-style: italic;
+    font-size: clamp(16px, min(1.8vw, 3vh), 24px);
+    letter-spacing: -0.01em; text-transform: none; line-height: 1;
+  }
+
+  /* BACK COVER */
+  .back {
+    position: absolute; inset: 0;
+    padding: 8vh 4.2vw;
+    display: flex; flex-direction: column; justify-content: space-between;
+    z-index: 2;
+  }
+  .back-top {
+    display: flex; justify-content: space-between;
+    font-family: var(--mono);
+    font-size: clamp(10px, min(0.8vw, 1.4vh), 13px);
+    letter-spacing: 0.22em; text-transform: uppercase;
+    opacity: 0.78; padding-bottom: 2.5vh;
+    border-bottom: 1px solid var(--rule-dark);
+  }
+  .back-middle { flex: 1; display: flex; flex-direction: column; justify-content: center; max-width: 36ch; }
+  .back-kicker {
+    font-family: var(--mono);
+    font-size: clamp(10px, min(0.9vw, 1.6vh), 14px);
+    letter-spacing: 0.25em; text-transform: uppercase;
+    margin-bottom: 3vh; opacity: 0.8;
+  }
+  .back-hook {
+    font-family: var(--serif-display);
+    font-weight: 700;
+    font-size: clamp(32px, min(5.5vw, 7vh), 90px);
+    line-height: 1.05; letter-spacing: -0.02em;
+  }
+  .back-hook em { font-style: italic; font-weight: 500; color: var(--law-bright); }
+  .back-bot {
+    display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4vw;
+    padding-top: 3vh; border-top: 1px solid var(--rule-dark);
+    font-family: var(--mono);
+    font-size: clamp(10px, min(0.8vw, 1.4vh), 13px);
+    letter-spacing: 0.18em; text-transform: uppercase;
+    opacity: 0.78; align-items: end;
+  }
+  .back-bot .sign {
+    font-family: var(--serif-display); font-style: italic;
+    font-size: clamp(14px, min(1.4vw, 2.5vh), 20px);
+    letter-spacing: -0.01em; text-transform: none;
+    opacity: 1; line-height: 1.2;
+  }
+
+  /* Lists */
+  .timeline, .agents {
+    font-family: var(--serif-body);
+    font-size: clamp(13px, min(1.2vw, 2.2vh), 18px);
+    line-height: 1.4; opacity: 0.88;
+  }
+  .timeline .row, .agents .a {
+    display: grid; gap: 2ch;
+    padding: 1.2vh 0;
+    border-top: 1px solid var(--rule);
+  }
+  .timeline .row { grid-template-columns: 9ch 1fr; }
+  .agents .a { grid-template-columns: 2ch 1fr; }
+  .page.dark .timeline .row, .page.dark .agents .a { border-top-color: var(--rule-dark); }
+  .timeline .row:last-child, .agents .a:last-child { border-bottom: 1px solid var(--rule); }
+  .page.dark .timeline .row:last-child, .page.dark .agents .a:last-child { border-bottom-color: var(--rule-dark); }
+  .timeline .sec, .agents .n {
+    font-family: var(--mono);
+    font-size: clamp(10px, min(0.85vw, 1.5vh), 13px);
+    letter-spacing: 0.15em; text-transform: uppercase;
+    padding-top: 0.25em; opacity: 0.9;
+  }
+  .agents .name em { font-family: var(--serif-display); font-style: italic; font-weight: 500; }
+
+  /* Navigation */
+  .nav-dots {
+    position: fixed; bottom: 2.5vh; left: 50%;
+    transform: translateX(-50%);
+    display: flex; gap: 12px; z-index: 40;
+    padding: 8px 16px; border-radius: 99px;
+    background: rgba(127,127,127,0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: rgba(127,127,127,0.55);
+    border: 0; padding: 0; cursor: pointer;
+    transition: all 280ms ease;
+  }
+  .dot:hover { background: rgba(127,127,127,0.9); transform: scale(1.2); }
+  .dot.active { background: currentColor; width: 24px; border-radius: 99px; }
+
+  .counter, .edge-hint {
+    position: fixed;
+    font-family: var(--mono);
+    font-size: clamp(10px, min(0.8vw, 1.4vh), 13px);
+    letter-spacing: 0.2em; z-index: 40;
+    pointer-events: none;
+    mix-blend-mode: difference; color: #fff; opacity: 0.85;
+  }
+  .counter { top: 2vh; right: 4.2vw; }
+  .edge-hint {
+    top: 50%; transform: translateY(-50%);
+    text-transform: uppercase; opacity: 0.32;
+    writing-mode: vertical-rl;
+  }
+  .edge-hint.left  { left: 1.1vw; }
+  .edge-hint.right { right: 1.1vw; transform: translateY(-50%) rotate(180deg); }
+
+  @media (max-width: 900px) {
+    .spread { grid-template-columns: 1fr; inset: 6vh 0 6vh 0; }
+    .spread::before { display: none; }
+    .pane { padding: 2vh 5vw; gap: 2vh; justify-content: center; }
+    .pane.right { border-top: 1px solid var(--rule); padding-top: 3vh; margin-top: auto; }
+    .page.dark .pane.right { border-top-color: var(--rule-dark); }
+    .ghost-num { display: none; }
+    .head { font-size: clamp(26px, 7vw, 50px); }
+    .metric { font-size: clamp(40px, 12vw, 100px); margin-bottom: 1vh; }
+    .cover-bot { grid-template-columns: 1fr 1fr; gap: 2vh; }
+  }
+
+  /* Print to PDF: File > Print > Save as PDF, landscape */
+  @media print {
+    html, body { overflow: visible; height: auto; background: var(--ink); }
+    .magazine { display: block; width: auto; height: auto; transform: none !important; transition: none; }
+    .page { page-break-after: always; width: 100%; height: 100vh; }
+    .nav-dots, .counter, .edge-hint { display: none !important; }
+  }
+  @page { size: A4 landscape; margin: 0; }
+</style>
+</head>
+<body>
+
+<div class="counter"><span id="cCur">01</span> &nbsp;/&nbsp; <span id="cTot">12</span></div>
+<div class="edge-hint left">← &nbsp; PREV</div>
+<div class="edge-hint right">NEXT &nbsp; →</div>
+
+<div class="magazine" id="mag">
+
+  <!-- 01 · COVER -->
+  <section class="page dark" data-page="1">
+    <div class="cover">
+      <div class="cover-top">
+        <div class="masthead-logo">Ẹ̀<em>tọ́</em>.</div>
+        <div class="masthead-meta">
+          Pitch Deck<br/>
+          OSF × Andela · Information You Can Trust<br/>
+          Lagos, Nigeria · 2026
+        </div>
+      </div>
+
+      <div class="cover-middle">
+        <div class="cover-deck">Transparency &amp; Accountability &nbsp;·&nbsp; Stability &amp; Social Cohesion</div>
+        <h1 class="cover-title">Know the law that<br/><em>actually applies</em><br/>to you today.</h1>
+        <p class="cover-sub">Lagos renters are acting on a tenancy law that does not exist yet. Ẹ̀tọ́ separates the law in force from the bill in the headlines, cites the exact section behind every answer, and ends with a date, an office, and a document.</p>
+      </div>
+
+      <div class="cover-bot">
+        <div class="cell"><span class="k">Bill in committee</span><span class="v" id="gapDays">435 days</span></div>
+        <div class="cell"><span class="k">Sections cited</span><span class="v">94</span></div>
+        <div class="cell"><span class="k">Languages</span><span class="v">EN · Pidgin</span></div>
+        <div class="cell"><span class="k">Runtime AI</span><span class="v">None</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 · THE PROBLEM -->
+  <section class="page light" data-page="2">
+    <header class="rail-top">
+      <span>Ẹ̀tọ́</span>
+      <span>01 <span class="rail-sep">/</span> The Problem</span>
+    </header>
+    <div class="spread">
+      <div class="pane left">
+        <div class="ghost-num">01</div>
+        <div class="content-top">
+          <div class="tag">The_Problem</div>
+          <h2 class="head">The reform everyone<br/>believes in is<br/><em>not law</em>.</h2>
+        </div>
+        <div class="content-bot">
+          <div class="body">
+            <p>Since July 2025, headlines have promised Lagos renters monthly rent, capped agency fees, and jail for illegal eviction. The bill behind those headlines is still in committee.</p>
+            <p>Tenants who trust the headlines refuse to pay for protections that have not passed, and lose. Tenants who miss the real law accept illegal evictions it already forbids.</p>
+            <p>Even the law's name is unstable: careful sources call the same statute both the "2011 Law" and "Cap. T1, 2015". If that trips lawyers, an ordinary tenant has no chance.</p>
+          </div>
+        </div>
+      </div>
+      <div class="pane right">
+        <div class="content-top">
+          <div class="metric-block">
+            <div class="metric-label">Days since second reading</div>
+            <div class="metric accent-warn" id="gapDays2">435</div>
+            <div class="metric-caption">The bill passed second reading on 10 July 2025. It is still not law. That number is the product's front page.</div>
+            <div class="ai-tag">Verified_2026-09-17</div>
+          </div>
+        </div>
+        <div class="callout">
+          <div class="callout-title">The Fact</div>
+          <div class="callout-body">Lagos has no rent control. Increases of 50% to 200% happen at renewal. What tenants believe about the law decides what they accept.</div>
+        </div>
+      </div>
+    </div>
+    <footer class="rail-bot">
+      <span>§ 01 / 10 &nbsp;·&nbsp; The Problem</span>
+      <span>Pitch Deck</span>
+    </footer>
+  </section>
+
+  <!-- 03 · THE USERS -->
+  <section class="page dark" data-page="3">
+    <header class="rail-top">
+      <span>Ẹ̀tọ́</span>
+      <span>02 <span class="rail-sep">/</span> The Users</span>
+    </header>
+    <div class="spread">
+      <div class="pane left">
+        <div class="ghost-num">02</div>
+        <div class="content-top">
+          <div class="tag">The_Users</div>
+          <h2 class="head">A locked door.<br/>A short notice.<br/>A fee with <em>no law</em><br/>behind it.</h2>
+        </div>
+        <div class="content-bot">
+          <div class="body">
+            <p>A yearly tenant in Surulere gets one month to leave. The law entitles her to six. She does not know, so she packs.</p>
+            <p>A landlord changes the locks over arrears. That is a crime today, arrears or not. Nobody in the compound knows.</p>
+            <p>An agent quotes a fee "as the government directed". No such law exists.</p>
+            <p>Built for renters first; also for small landlords who want to stay compliant, and the paralegals who handle these disputes daily.</p>
+          </div>
+        </div>
+      </div>
+      <div class="pane right">
+        <div class="content-top">
+          <div class="metric-block">
+            <div class="metric-label">Notice she was entitled to</div>
+            <div class="metric italic accent-law">6 mo.</div>
+            <div class="metric-caption">Section 13(1)(e), in force since 2011. The most common protections are the least known.</div>
+            <div class="ai-tag">Lagos_Renters</div>
+          </div>
+        </div>
+        <div class="callout">
+          <div class="callout-title">The Stake</div>
+          <div class="callout-body">Illegal self-help eviction is the most common physical harm in Lagos tenancy disputes. Information is the difference between a mediation session and a lost home.</div>
+        </div>
+      </div>
+    </div>
+    <footer class="rail-bot">
+      <span>§ 02 / 10 &nbsp;·&nbsp; The Users</span>
+      <span>Pitch Deck</span>
+    </footer>
+  </section>
+
+  <!-- 04 · THE SOLUTION -->
+  <section class="page light" data-page="4">
+    <header class="rail-top">
+      <span>Ẹ̀tọ́</span>
+      <span>03 <span class="rail-sep">/</span> The Solution</span>
+    </header>
+    <div class="spread">
+      <div class="pane left">
+        <div class="ghost-num">03</div>
+        <div class="content-top">
+          <div class="tag">The_Solution</div>
+          <h2 class="head">Two panels,<br/><em>never merged</em>.</h2>
+        </div>
+        <div class="content-bot">
+          <div class="body">
+            <p>Every answer splits into <strong class="accent-law">LAW · IN FORCE</strong> and <strong class="accent-bill">BILL · NOT LAW YET</strong>. Each panel is stamped with the date its status was last verified.</p>
+            <p>Every sentence carries a section chip. Tap it and the verbatim statute opens, with a link to the official gazette or Assembly page.</p>
+            <p>A user must be unable to mistake a proposal for a protection. That single design rule is the product.</p>
+          </div>
+        </div>
+      </div>
+      <div class="pane right">
+        <div class="content-top">
+          <div class="metric-block">
+            <div class="metric-label">Sections &amp; clauses, all citable</div>
+            <div class="metric">94</div>
+            <div class="metric-caption">49 sections of the law in force, 45 clauses of the bill, structured, hashed, and resolvable. An unresolvable citation fails the answer.</div>
+            <div class="ai-tag">Fail_Closed</div>
+          </div>
+        </div>
+        <div class="callout">
+          <div class="callout-title">Beyond Information</div>
+          <div class="callout-body">Every answer ends in action: a computed date, a named office with verified contacts, and a downloadable letter or case file for the Citizens' Mediation Bureau.</div>
+        </div>
+      </div>
+    </div>
+    <footer class="rail-bot">
+      <span>§ 03 / 10 &nbsp;·&nbsp; The Solution</span>
+      <span>Pitch Deck</span>
+    </footer>
+  </section>
+
+  <!-- 05 · HOW IT WORKS -->
+  <section class="page dark" data-page="5">
+    <header class="rail-top">
+      <span>Ẹ̀tọ́</span>
+      <span>04 <span class="rail-sep">/</span> How It Works</span>
+    </header>
+    <div class="spread">
+      <div class="pane left">
+        <div class="ghost-num">04</div>
+        <div class="content-top">
+          <div class="tag">One_Minute_Flow</div>
+          <h2 class="head">From a quit notice<br/>to a <em>case file</em>.</h2>
+        </div>
+        <div class="content-bot">
+          <div class="timeline">
+            <div class="row"><div class="sec">Step 01</div><div>Tap "I was given a quit notice". Answer four questions: where, how rent is paid, when the notice arrived, when it says to leave.</div></div>
+            <div class="row"><div class="sec">Step 02</div><div>Tested code computes the verdict: notice SHORT by 151 days. Earliest lawful end of tenancy: 1 March 2027.</div></div>
+            <div class="row"><div class="sec">Step 03</div><div>Both panels render with sections to tap open. The bill's identical notice table shows nothing changes here even if it passes.</div></div>
+            <div class="row"><div class="sec">Step 04</div><div>Download a reply letter to the landlord and a case file for the Mediation Bureau, with its verified address and phone number.</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="pane right">
+        <div class="content-top">
+          <div class="metric-block">
+            <div class="metric-label">Notice shortfall, computed</div>
+            <div class="metric italic accent-warn">151</div>
+            <div class="metric-caption">Days short, from date arithmetic in unit-tested code. The dates are never model output.</div>
+            <div class="ai-tag">Deterministic_Rules</div>
+          </div>
+        </div>
+        <div class="callout">
+          <div class="callout-title">No Chat Box</div>
+          <div class="callout-body">Five concrete situations instead of a blank prompt. Typed questions work too, in English or Pidgin, and refuse honestly when the corpus has no answer.</div>
+        </div>
+      </div>
+    </div>
+    <footer class="rail-bot">
+      <span>§ 04 / 10 &nbsp;·&nbsp; How It Works</span>
+      <span>Pitch Deck</span>
+    </footer>
+  </section>
+
+  <!-- 06 · THE LEDGER -->
+  <section class="page light" data-page="6">
+    <header class="rail-top">
+      <span>Ẹ̀tọ́</span>
+      <span>05 <span class="rail-sep">/</span> The Ledger</span>
+    </header>
+    <div class="spread">
+      <div class="pane left">
+        <div class="ghost-num">05</div>
+        <div class="content-top">
+          <div class="tag">Law_vs_Bill</div>
+          <h2 class="head">The change log<br/>the headlines<br/><em>skip</em>.</h2>
+        </div>
+        <div class="content-bot">
+          <div class="body">
+            <p>A track-changes ledger shows what the bill would actually change, row by row, cited on both sides. Including the uncomfortable rows:</p>
+            <p>Arrears evictions get <strong>faster</strong> under the bill. A monthly tenancy lapses after 6 months of arrears today; the bill cuts that to 2.</p>
+            <p>And the famous "10% agency fee cap"? We traced it. It comes from a government statement of June 2025. It is in no law and no bill. The bill says 5%.</p>
+          </div>
+        </div>
+      </div>
+      <div class="pane right">
+        <div class="content-top">
+          <div class="metric-block">
+            <div class="metric-label">Self-help eviction fine</div>
+            <div class="metric"><span class="accent-law">¼M</span>→<span class="accent-bill">1M</span></div>
+            <div class="metric-caption">₦250,000 in force today (s.44). At least ₦1,000,000 under the bill (cl.43). Only one of these is real.</div>
+            <div class="ai-tag">Cited_Both_Sides</div>
+          </div>
+        </div>
+        <div class="callout">
+          <div class="callout-title">Myth vs Fact</div>
+          <div class="callout-body">Five numbered cards debunk the circulating claims in Pidgin and English, each rumor struck through, each fact pinned to its section.</div>
+        </div>
+      </div>
+    </div>
+    <footer class="rail-bot">
+      <span>§ 05 / 10 &nbsp;·&nbsp; The Ledger</span>
+      <span>Pitch Deck</span>
+    </footer>
+  </section>
+
+  <!-- 07 · TRUST MODEL -->
+  <section class="page dark" data-page="7">
+    <header class="rail-top">
+      <span>Ẹ̀tọ́</span>
+      <span>06 <span class="rail-sep">/</span> Trust Model</span>
+    </header>
+    <div class="spread">
+      <div class="pane left">
+        <div class="ghost-num">06</div>
+        <div class="content-top">
+          <div class="tag">Trust_Model</div>
+          <h2 class="head">Verifiable,<br/>or it does not<br/><em>ship</em>.</h2>
+        </div>
+        <div class="content-bot">
+          <div class="agents">
+            <div class="a"><div class="n">01</div><div class="name"><em>Fixed corpus</em> — gazette PDF and Assembly bill text, versioned in-repo with SHA-256 hashes. Never re-scraped at answer time.</div></div>
+            <div class="a"><div class="n">02</div><div class="name"><em>Fail-closed citations</em> — a reference that does not resolve kills the answer.</div></div>
+            <div class="a"><div class="n">03</div><div class="name"><em>Status as data</em> — IN_FORCE / PROPOSED, stamped with the date last verified, on every panel.</div></div>
+            <div class="a"><div class="n">04</div><div class="name"><em>Human-confirmed changes</em> — the refresh tool flags stage-change evidence but refuses to apply it itself.</div></div>
+            <div class="a"><div class="n">05</div><div class="name"><em>Honest refusal</em> — out-of-domain questions get "we don't know" and a route to mediation.</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="pane right">
+        <div class="content-top">
+          <div class="metric-block">
+            <div class="metric-label">Uncited legal claims shipped</div>
+            <div class="metric accent-law">0</div>
+            <div class="metric-caption">Even the mediation centre's phone numbers carry a verification date. When two official sites disagreed, we showed our work.</div>
+            <div class="ai-tag">41_Unit_Tests</div>
+          </div>
+        </div>
+        <div class="callout">
+          <div class="callout-title">Found Along The Way</div>
+          <div class="callout-body">The regulator's website is down from every network we tried. Two Ministry of Justice pages give different addresses for the mediation service. The information gap is real, and it is official.</div>
+        </div>
+      </div>
+    </div>
+    <footer class="rail-bot">
+      <span>§ 06 / 10 &nbsp;·&nbsp; Trust Model</span>
+      <span>Pitch Deck</span>
+    </footer>
+  </section>
+
+  <!-- 08 · BUILT FOR THE CONSTRAINTS -->
+  <section class="page light" data-page="8">
+    <header class="rail-top">
+      <span>Ẹ̀tọ́</span>
+      <span>07 <span class="rail-sep">/</span> Constraints</span>
+    </header>
+    <div class="spread">
+      <div class="pane left">
+        <div class="ghost-num">07</div>
+        <div class="content-top">
+          <div class="tag">Real_Conditions</div>
+          <h2 class="head">Built for a phone<br/>in Lagos, <em>not a<br/>laptop in a demo</em>.</h2>
+        </div>
+        <div class="content-bot">
+          <div class="body">
+            <p><strong>Offline:</strong> the whole app, corpus included, is under 1&nbsp;MB and works with zero network after first visit. We verified by killing the server.</p>
+            <p><strong>Private:</strong> no account, no backend. Nothing typed leaves the device. The lock-out incident log lives in local storage with one-tap delete.</p>
+            <p><strong>Inclusive:</strong> full Nigerian Pidgin alongside English, buttons instead of a blank prompt, WCAG AA contrast, reduced-motion support.</p>
+          </div>
+        </div>
+      </div>
+      <div class="pane right">
+        <div class="content-top">
+          <div class="metric-block">
+            <div class="metric-label">Full app, corpus included</div>
+            <div class="metric italic">&lt;1MB</div>
+            <div class="metric-caption">Text first. No images, no webfonts, no runtime services. Low bandwidth is a design input, not an afterthought.</div>
+            <div class="ai-tag">Offline_First</div>
+          </div>
+        </div>
+        <div class="callout">
+          <div class="callout-title">Wetin Dem Talk</div>
+          <div class="callout-body">Pidgin is not a translation layer bolted on. Every legal point, myth card, and letter note ships in both languages, and typed Pidgin queries reach the right sections.</div>
+        </div>
+      </div>
+    </div>
+    <footer class="rail-bot">
+      <span>§ 07 / 10 &nbsp;·&nbsp; Constraints</span>
+      <span>Pitch Deck</span>
+    </footer>
+  </section>
+
+  <!-- 09 · SCALABILITY -->
+  <section class="page dark" data-page="9">
+    <header class="rail-top">
+      <span>Ẹ̀tọ́</span>
+      <span>08 <span class="rail-sep">/</span> Scalability</span>
+    </header>
+    <div class="spread">
+      <div class="pane left">
+        <div class="ghost-num">08</div>
+        <div class="content-top">
+          <div class="tag">Jurisdiction_Packs</div>
+          <h2 class="head">The engine knows<br/>nothing about<br/><em>Lagos</em>.</h2>
+        </div>
+        <div class="content-bot">
+          <div class="body">
+            <p>Everything local lives in one directory: statute, bill, bodies, myths, ledger, languages, manifest. Retrieval, date arithmetic, citations, and documents are domain-general.</p>
+            <p>Scaling means authoring a pack, not rewriting code. The pattern travels: nearly every Nigerian state, and Nairobi, Accra, and Kampala, has an old law in force, a loudly reported reform, and a gap between them.</p>
+            <p>The second pack is already started the honest way: Abuja, sources identified, labelled unverified until the checklist is done.</p>
+          </div>
+        </div>
+      </div>
+      <div class="pane right">
+        <div class="content-top">
+          <div class="metric-block">
+            <div class="metric-label">Steps to author a pack</div>
+            <div class="metric">11</div>
+            <div class="metric-caption">A written checklist distilled from building Lagos, including the steps that only exist because something was wrong.</div>
+            <div class="ai-tag">corpus/PACK-AUTHORING.md</div>
+          </div>
+        </div>
+        <div class="callout">
+          <div class="callout-title">Depth First</div>
+          <div class="callout-body">One deep, verified pack beats five shallow ones. A pack without the verification steps is exactly the unverified information this project exists to displace.</div>
+        </div>
+      </div>
+    </div>
+    <footer class="rail-bot">
+      <span>§ 08 / 10 &nbsp;·&nbsp; Scalability</span>
+      <span>Pitch Deck</span>
+    </footer>
+  </section>
+
+  <!-- 10 · AI USAGE -->
+  <section class="page light" data-page="10">
+    <header class="rail-top">
+      <span>Ẹ̀tọ́</span>
+      <span>09 <span class="rail-sep">/</span> Built With AI</span>
+    </header>
+    <div class="spread">
+      <div class="pane left">
+        <div class="ghost-num">09</div>
+        <div class="content-top">
+          <div class="tag">AI_In_The_Build</div>
+          <h2 class="head">AI built it.<br/>A human kept it<br/><em>honest</em>.</h2>
+        </div>
+        <div class="content-bot">
+          <div class="body">
+            <p>Claude Code did the engineering: corpus pipeline, retrieval, rules engine, UI, 41 tests, and live browser verification of every phase. Firecrawl ran the ingestion jobs that traced the "10%" myth and caught the conflicting official contact pages.</p>
+            <p>The human supplied the idea and the corrections that mattered: the statute's real name, the four exempted areas, a disclaimer aimed at the wrong reader, a design that copied too closely.</p>
+          </div>
+        </div>
+      </div>
+      <div class="pane right">
+        <div class="content-top">
+          <div class="metric-block">
+            <div class="metric-label">Runtime AI in the product</div>
+            <div class="metric italic">None</div>
+            <div class="metric-caption">Deliberately. A legal tool must never hallucinate a section number. Retrieval is deterministic, dates are code, letters are templates.</div>
+            <div class="ai-tag">Claude_Code + Firecrawl</div>
+          </div>
+        </div>
+        <div class="callout">
+          <div class="callout-title">The Record</div>
+          <div class="callout-body">The commit history shows the arc: corpus first, tests throughout, human review at every trust decision. The AI-usage log names what had to be corrected.</div>
+        </div>
+      </div>
+    </div>
+    <footer class="rail-bot">
+      <span>§ 09 / 10 &nbsp;·&nbsp; Built With AI</span>
+      <span>Pitch Deck</span>
+    </footer>
+  </section>
+
+  <!-- 11 · IMPACT -->
+  <section class="page dark" data-page="11">
+    <header class="rail-top">
+      <span>Ẹ̀tọ́</span>
+      <span>10 <span class="rail-sep">/</span> Impact</span>
+    </header>
+    <div class="spread">
+      <div class="pane left">
+        <div class="ghost-num">10</div>
+        <div class="content-top">
+          <div class="tag">The_Impact</div>
+          <h2 class="head">Disputes routed to<br/><em>mediation</em>, not<br/>the street.</h2>
+        </div>
+        <div class="content-bot">
+          <div class="body">
+            <p>Every answer routes to the Citizens' Mediation Bureau first: free, no lawyer, 18 offices, verified contacts. Tenant and landlord argue from the same cited text instead of competing rumors.</p>
+            <p>When the bill finally passes, Ẹ̀tọ́ is the tool that says so, the day it happens, with the stamp to prove it. The 435-day counter becomes the record of how long Lagos waited.</p>
+            <p>And the pack model means the next city does not start from zero.</p>
+          </div>
+        </div>
+      </div>
+      <div class="pane right">
+        <div class="content-top">
+          <div class="metric-block">
+            <div class="metric-label">Mediation offices, verified</div>
+            <div class="metric accent-law">18</div>
+            <div class="metric-caption">With addresses and phone numbers checked against official sources, and the conflicts between those sources documented.</div>
+            <div class="ai-tag">Clear_Next_Steps</div>
+          </div>
+        </div>
+        <div class="callout">
+          <div class="callout-title">Both Tracks</div>
+          <div class="callout-body">Transparency: the gap between announced reform and enacted law, made visible and citable. Stability: local disputes de-escalated toward mediation with shared facts.</div>
+        </div>
+      </div>
+    </div>
+    <footer class="rail-bot">
+      <span>§ 10 / 10 &nbsp;·&nbsp; Impact</span>
+      <span>Pitch Deck</span>
+    </footer>
+  </section>
+
+  <!-- 12 · BACK COVER -->
+  <section class="page dark" data-page="12">
+    <div class="back">
+      <div class="back-top">
+        <span>Ẹ̀tọ́ &nbsp;·&nbsp; Pitch Deck &nbsp;·&nbsp; End</span>
+        <span>Lagos · 2026</span>
+      </div>
+
+      <div class="back-middle">
+        <div class="back-kicker">The Hook</div>
+        <h2 class="back-hook">435 days of headlines. Zero new rights. <em>Until people can check.</em></h2>
+      </div>
+
+      <div class="back-bot">
+        <div>
+          <div style="opacity:0.6; margin-bottom: 0.6em;">Signed</div>
+          <div class="sign">Ẹ̀tọ́ — right, entitlement, what is due to you.</div>
+        </div>
+        <div>github.com/<br/>mohammedfirdouss/eto</div>
+        <div>Informational only.<br/>Not legal advice.</div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<nav class="nav-dots" id="dots" aria-label="Page navigation"></nav>
+
+<script>
+(() => {
+  const mag = document.getElementById('mag');
+  const total = 12;
+  let cur = 0;
+
+  // Live gap counter: days since the bill's second reading
+  const gap = Math.round((Date.now() - Date.UTC(2025, 6, 10)) / 86400000);
+  const g1 = document.getElementById('gapDays');
+  const g2 = document.getElementById('gapDays2');
+  if (g1) g1.textContent = gap + ' days';
+  if (g2) g2.textContent = gap;
+
+  const dotsEl = document.getElementById('dots');
+  for (let i = 0; i < total; i++) {
+    const b = document.createElement('button');
+    b.className = 'dot' + (i === 0 ? ' active' : '');
+    b.setAttribute('aria-label', 'Go to page ' + (i + 1));
+    b.addEventListener('click', () => go(i));
+    dotsEl.appendChild(b);
+  }
+  const dots = dotsEl.querySelectorAll('.dot');
+  const cCur = document.getElementById('cCur');
+
+  function go(n) {
+    cur = Math.max(0, Math.min(total - 1, n));
+    mag.style.transform = `translateX(-${cur * 100}vw)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === cur));
+    cCur.textContent = String(cur + 1).padStart(2, '0');
+  }
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+      e.preventDefault(); go(cur + 1);
+    } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      e.preventDefault(); go(cur - 1);
+    } else if (e.key === 'Home') { e.preventDefault(); go(0); }
+      else if (e.key === 'End')  { e.preventDefault(); go(total - 1); }
+  });
+
+  let wheelLocked = false;
+  let wheelAccum = 0;
+  window.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    if (wheelLocked) return;
+    const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+    wheelAccum += delta;
+    if (Math.abs(wheelAccum) < 40) return;
+    wheelLocked = true;
+    go(cur + (wheelAccum > 0 ? 1 : -1));
+    wheelAccum = 0;
+    setTimeout(() => { wheelLocked = false; }, 780);
+  }, { passive: false });
+
+  let tStartX = 0, tStartY = 0, tActive = false;
+  window.addEventListener('touchstart', (e) => {
+    tStartX = e.touches[0].clientX;
+    tStartY = e.touches[0].clientY;
+    tActive = true;
+  }, { passive: true });
+  window.addEventListener('touchend', (e) => {
+    if (!tActive) return;
+    tActive = false;
+    const dx = tStartX - e.changedTouches[0].clientX;
+    const dy = tStartY - e.changedTouches[0].clientY;
+    if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy)) {
+      go(cur + (dx > 0 ? 1 : -1));
+    }
+  }, { passive: true });
+
+  window.addEventListener('touchmove', (e) => {
+    if (e.cancelable) e.preventDefault();
+  }, { passive: false });
+
+  window.addEventListener('click', (e) => {
+    if (e.target.closest('.dot') || e.target.closest('button') || e.target.closest('a')) return;
+    const w = window.innerWidth;
+    if (e.clientX < w * 0.08) go(cur - 1);
+    else if (e.clientX > w * 0.92) go(cur + 1);
+  });
+})();
+</script>
+</body>
+</html>
