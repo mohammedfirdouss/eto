@@ -371,6 +371,7 @@ form.facts textarea {
 
 .docket {
   position: relative;
+  margin-top: 0.9rem; /* clearance for the seal so it never covers the eyebrow */
   background: var(--card);
   color: var(--ink);
   padding: 1.1rem 1.2rem 1rem;
@@ -489,6 +490,23 @@ form.facts textarea {
   .ledger-row {
     grid-template-columns: 1.1fr 1fr 1fr;
     gap: 1rem;
+  }
+}
+
+/* stacked ledger loses its column headers — restore them inline on mobile */
+@media (max-width: 719.9px) {
+  .ledger-head {
+    display: none;
+  }
+
+  .ledger-law::before,
+  .ledger-bill::before {
+    content: attr(data-label) ": ";
+    font-family: ui-monospace, Menlo, monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
   }
 }
 

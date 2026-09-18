@@ -511,10 +511,10 @@ function ChangesLedger({ lang }: { lang: Lang }) {
                 {c.verdict}
               </span>
             </span>
-            <span className="ledger-law">
+            <span className="ledger-law" data-label={t("lawColumn", lang)}>
               {c.law_en} <Cite refStr={c.law_ref} />
             </span>
-            <span className="ledger-bill">
+            <span className="ledger-bill" data-label={t("billColumn", lang)}>
               {lang === "pcm" ? c.bill_pcm : c.bill_en} <Cite refStr={c.bill_ref} />
             </span>
           </div>
