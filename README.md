@@ -43,6 +43,8 @@ npm test           # unit tests: retrieval, rules engine, situations
 ```text
 corpus/lagos-ng/     the Lagos pack: statute and bill (sources, hashes,
                      section JSON), bodies, myths, changes ledger, PROVENANCE.md
+corpus/abuja-ng/     second pack, skeleton only: sources identified, unverified
+corpus/PACK-AUTHORING.md   what it takes to author a pack for a new city
 web/                 Next.js app: UI, retrieval, rules engine, tests
 tools/               corpus extraction pipeline (split_corpus.py)
 docs/                submission material
