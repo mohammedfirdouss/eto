@@ -68,6 +68,12 @@ describe("retrieval", () => {
     for (const h of r.proposed) expect(h.unit.status).not.toBe("IN_FORCE");
   });
 
+  it("typed Pidgin reaches the same sections as English", () => {
+    const r = retrieve("landlord wan comot me from the house by force");
+    expect(r.refused).toBe(false);
+    expect([...r.inForce, ...r.proposed].map((h) => h.unit.ref)).toContain("s.44");
+  });
+
   it("refuses out-of-domain queries", () => {
     expect(retrieve("how do I renew my passport visa application").refused).toBe(true);
     expect(retrieve("best jollof rice recipe").refused).toBe(true);

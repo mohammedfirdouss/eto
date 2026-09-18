@@ -37,6 +37,17 @@ const SYNONYMS: Record<string, string> = {
   harassed: "molest",
   threat: "threaten",
   threatened: "threaten",
+  // Nigerian Pidgin phrasings — fold onto statute vocabulary so typed Pidgin
+  // queries clear the refusal threshold like their English equivalents
+  comot: "eject",
+  commot: "eject",
+  pursue: "eject",
+  chase: "eject",
+  owe: "arrear",
+  owing: "arrear",
+  notis: "notice",
+  moni: "rent",
+  wahala: "dispute",
   increase: "rent_increase",
   increased: "rent_increase",
   increment: "rent_increase",
