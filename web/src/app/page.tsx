@@ -7,6 +7,7 @@ import { retrieve, RetrievalResult } from "../lib/retrieval";
 import { Answer, EXCLUDED_AREAS, Facts, NamedBody, SITUATIONS, SituationId } from "../lib/situations";
 import { daysBetween, TenancyType } from "../lib/rules";
 import { buildCaseFile } from "../lib/casefile";
+import { clearIncidents, incidentsText, listIncidents, saveIncident } from "../lib/incidents";
 import myths from "../data/myths.json";
 import changes from "../data/changes.json";
 
@@ -133,6 +134,32 @@ function BodyBlock({
   );
 }
 
+function IncidentVault({ lang }: { lang: Lang }) {
+  const [count, setCount] = useState(() => listIncidents().length);
+  if (count === 0) return null;
+  return (
+    <div className="computed">
+      <strong>{t("incidentsSaved", lang).replace("{n}", String(count))}</strong>
+      <p className="stamp">{t("incidentsNote", lang)}</p>
+      <button
+        className="primary"
+        onClick={() => downloadText("eto-incident-log.txt", incidentsText(listIncidents()))}
+      >
+        {t("downloadIncidents", lang)}
+      </button>{" "}
+      <button
+        className="linklike"
+        onClick={() => {
+          clearIncidents();
+          setCount(0);
+        }}
+      >
+        {t("deleteIncidents", lang)}
+      </button>
+    </div>
+  );
+}
+
 function AnswerView({ answer, facts, lang }: { answer: Answer; facts: Facts; lang: Lang }) {
   const coverageText =
     lang === "pcm" && answer.coverageNotePcm ? answer.coverageNotePcm : answer.coverageNote;
@@ -161,6 +188,7 @@ function AnswerView({ answer, facts, lang }: { answer: Answer; facts: Facts; lan
         </div>
       )}
 
+      {answer.situation === "lockout" && <IncidentVault lang={lang} />}
       <BodyBlock body={answer.body} heading={t("whereToGo", lang)} lang={lang} />
       {answer.altBody && (
         <BodyBlock body={answer.altBody} heading={t("altWhereToGo", lang)} lang={lang} />
@@ -604,6 +632,7 @@ export default function Home() {
             lang={lang}
             onSubmit={(f) => {
               setFacts(f);
+              if (situation === "lockout") saveIncident(f, new Date().toISOString());
               setAnswer(active.answer(f));
             }}
           />

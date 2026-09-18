@@ -77,6 +77,16 @@ const STRINGS = {
     en: "Download your case file (for the Mediation Centre)",
     pcm: "Download your case file (make you carry go Mediation Centre)",
   },
+  incidentsSaved: {
+    en: "{n} incident record(s) saved on this phone",
+    pcm: "{n} incident record(s) don save for this phone",
+  },
+  incidentsNote: {
+    en: "They stay on this device only, until you delete them. Take the log to mediation.",
+    pcm: "Na only this phone get am, until you delete am. Carry the log go mediation.",
+  },
+  downloadIncidents: { en: "Download the incident log", pcm: "Download the incident log" },
+  deleteIncidents: { en: "Delete all records", pcm: "Delete everything" },
   situationLabels: {
     en: {
       "rent-increase": "My landlord increased my rent",
