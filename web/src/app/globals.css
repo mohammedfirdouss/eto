@@ -697,7 +697,7 @@ form.facts textarea {
 }
 
 @media (max-width: 719.9px) {
-  .docket-next {
+  button.docket-next {
     display: inline-block;
     padding: 0.6rem 0.4rem;
   }
