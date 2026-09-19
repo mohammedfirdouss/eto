@@ -19,6 +19,14 @@ case file you can download.
 
 ![The home page: language toggle, a daily verified fact, and a counter of days the bill has spent in committee](docs/screenshots/home.jpg)
 
+## Demo
+
+Watch the 2 minute demo (with sound):
+
+https://github.com/mohammedfirdouss/eto/raw/main/docs/demo/eto-demo.mp4
+
+If the player does not load, [download the video](docs/demo/eto-demo.mp4).
+
 ## What it does
 
 **Pick your situation.** Five common problems, in English or Nigerian Pidgin: a rent
