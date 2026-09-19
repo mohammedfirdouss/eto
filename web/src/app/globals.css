@@ -682,3 +682,16 @@ form.facts textarea {
   background: var(--card);
   color: var(--ink);
 }
+
+/* phones: citation chips need a real touch target */
+@media (max-width: 719.9px) {
+  .cite > button {
+    padding: 0.45rem 0.7rem;
+    font-size: 0.82rem;
+    min-height: 40px;
+  }
+
+  .langbtn {
+    padding: 0.55rem 1rem;
+  }
+}
