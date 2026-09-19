@@ -17,6 +17,8 @@ case file you can download.
 
 > *Ẹ̀tọ́* (Yoruba): right, entitlement, what is due to you.
 
+**Live: [eto-eight.vercel.app](https://eto-eight.vercel.app)**
+
 ![The home page: language toggle, a daily verified fact, and a counter of days the bill has spent in committee](docs/screenshots/home.jpg)
 
 ## Demo
