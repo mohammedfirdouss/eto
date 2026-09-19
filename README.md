@@ -19,15 +19,9 @@ case file you can download.
 
 **Live: [eto-eight.vercel.app](https://eto-eight.vercel.app)**
 
-![The home page: language toggle, a daily verified fact, and a counter of days the bill has spent in committee](docs/screenshots/home.jpg)
-
 ## Demo
 
-
 https://github.com/user-attachments/assets/62dcb62d-58f2-46df-bce0-73817a199b7d
-
-
-
 
 ## What it does
 
@@ -36,6 +30,8 @@ increase, a quit notice, a lock out, an agency fee, or checking whether an agent
 registered. The tool asks only for the facts it needs. It also asks where the house is,
 because the current law does not apply in Apapa, Ikeja GRA, Ikoyi, and Victoria Island
 (section 1(3)).
+
+![The home page: language toggle, a daily verified fact, and a counter of days the bill has spent in committee](docs/screenshots/home.jpg)
 
 **Read two panels, never one blend.** Green for the law in force, amber for the bill.
 Each panel shows the date its status was last verified. Tap any section chip to read the
