@@ -21,11 +21,9 @@ case file you can download.
 
 ## Demo
 
-Watch the 2 minute demo (with sound):
+![Thirty seconds of the demo: submitting a quit notice and getting the verdict, short by 151 days](docs/screenshots/demo-highlight.gif)
 
-https://github.com/mohammedfirdouss/eto/raw/main/docs/demo/eto-demo.mp4
-
-If the player does not load, [download the video](docs/demo/eto-demo.mp4).
+The full 2 minute demo with narration: [docs/demo/eto-demo.mp4](docs/demo/eto-demo.mp4).
 
 ## What it does
 
